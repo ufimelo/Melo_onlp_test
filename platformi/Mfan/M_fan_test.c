@@ -63,6 +63,28 @@ typedef enum onlp_fan_mode_e {
     ONLP_FAN_MODE_INVALID = -1,
 } onlp_fan_mode_t;
 
+//Melo Add
+const char* fan_mode_to_string(onlp_fan_mode_t mode) {
+    switch (mode) {
+        case ONLP_FAN_MODE_OFF:
+            return "OFF";
+        case ONLP_FAN_MODE_SLOW:
+            return "SLOW";
+        case ONLP_FAN_MODE_NORMAL:
+            return "NORMAL";
+        case ONLP_FAN_MODE_FAST:
+            return "FAST";
+        case ONLP_FAN_MODE_MAX:
+            return "MAX";
+        default:
+            return "UNKNOWN";
+    }
+}
+
+// 在你的printf语句中使用
+printf("Mode: %s\n", fan_mode_to_string(info.mode));
+
+
 //In fan.h but not in fani.h (Melo)
 typedef struct onlp_fan_info_s {
     /** OID Header */
@@ -99,16 +121,16 @@ extern int onlp_init(void);
 extern int onlp_denit(void);
 int main()
 {
-    printf("Start M_fan_test\n");
+    printf("START M_fan_test\n");
 
-    printf("Start onlp initialization...\n");
+    printf("START ONLP INITIALIZATIION...\n");
     // onlp_psui_init();
     onlp_init();
-    printf("onlp initialization down!\n");
+    printf("ONLP INITIALIZATIION DOWN!\n");
 
     onlp_fan_info_t info = {0};
 
-    printf("[Start Get FAN Info]\n");
+    printf("START GET FAN INFO\n");
     for(int fan_id = 1; fan_id <= 2; fan_id++){
         printf("Get FAN %d Info...\n", fan_id);
 
@@ -127,20 +149,20 @@ int main()
                 "Caps:   %u\n"
                 "RPM:    %u\n"
                 "Percentage: %d\n"
-                "Mode:   %d\n"
+                "Mode:   %d (%s)\n"
                 "Model:    %s\n"
                 "Serial No.: %s\n", 
-                info.status, info.caps, info.rpm, info.percentage, info.mode, info.model, info.serial
+                info.status, info.caps, info.rpm, info.percentage, info.mode, fan_mode_to_string(info.mode), info.model, info.serial
             );
 
             printf("Get FAN %d Info done!\n", fan_id);
             memset(&info, 0, sizeof(info));
         } 
         else {
-            printf("Failed to get FAN %d Info\n", fan_id);
+            printf("[FAILED!] Failed To Get FAN %d INFO\n", fan_id);
         }
     }
-    printf("[Get FAN Info Done!]\n");
+    printf("[DONE] Get FAN INFO Done!]\n");
 
     onlp_denit();
     return 0;
