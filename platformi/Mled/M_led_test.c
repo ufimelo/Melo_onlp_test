@@ -176,7 +176,7 @@ int main()
                 "Description: %s\n"
                 "POID: %u\n"
                 "COID: %s\n",
-                fan_id, info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
+                info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
             );
 
             printf(
