@@ -139,10 +139,7 @@ int main()
         } 
         else {
             printf("Failed to get FAN %d Info\n", fan_id);
-         }
-     }
         }
-
     }
 
     onlp_denit();
