@@ -108,18 +108,17 @@ int main()
 
     onlp_fan_info_t info = {0};
 
-    printf("Start Get fan Info\n");
+    printf("[Start Get FAN Info]\n");
     for(int fan_id = 1; fan_id <= 2; fan_id++){
         printf("Get FAN %d Info...\n", fan_id);
 
         if(onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, fan_id), &info) >= 0){
             printf(
-                "FAN %d OID Header\n"
+                "*********FAN %d OID Header*********\n"
                 "ID: %u\n"
                 "Description: %s\n"
                 "POID: %u\n"
-                "COID: %s\n"
-                "----------------------",
+                "COID: %s\n",
                 fan_id, info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
             );
 
@@ -131,7 +130,7 @@ int main()
                 "Mode:   %d\n"
                 "Model:    %s\n"
                 "Serial No.: %s\n", 
-                info.status, info.caps, info.rpm, info.percentage, info.mode, info.rpm, info.percentage
+                info.status, info.caps, info.rpm, info.percentage, info.mode, info.model, info.serial
             );
 
             printf("Get FAN %d Info done!\n", fan_id);
@@ -141,6 +140,7 @@ int main()
             printf("Failed to get FAN %d Info\n", fan_id);
         }
     }
+    printf("[Get FAN Info Done!]\n");
 
     onlp_denit();
     return 0;
