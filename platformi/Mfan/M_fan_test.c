@@ -108,17 +108,18 @@ int main()
     onlp_fan_info_t info = {0};
 
     printf("Start Get fan Info");
-    printf("Get Fan 1 Info");
+    printf("Get FAN 1 Info...");
     onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, 1), &info);
     printf(
-        "Status: %d\n
-        Caps:   %d\n
-        Mode:   %d\n
-        RPM:    %d\n
-        Percentage: %d\n", status, caps, mode, rpm, percentage
+        "Status: %u\n
+        Caps:   %u\n
+        Mode:   %u\n
+        RPM:    %u\n
+        Percentage: %d\n", info.status, info.caps, info.mode, info.rpm, info.percentage
     );
+    printf("Get FAN 1 Info done!");
 
-    printf("Get Fan 2 Info");
+    printf("Get FAN 2 Info...");
     onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, 2), &info);
 
 
