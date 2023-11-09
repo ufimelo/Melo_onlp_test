@@ -123,10 +123,10 @@ int main()
 {
     printf("START M_fan_test\n");
 
-    printf("START ONLP INITIALIZATIION...\n");
+    printf("START ONLP INITIALIZATION...\n");
     // onlp_psui_init();
     onlp_init();
-    printf("ONLP INITIALIZATIION DOWN!\n");
+    printf("ONLP INITIALIZATION DOWN!\n");
 
     onlp_fan_info_t info = {0};
 
