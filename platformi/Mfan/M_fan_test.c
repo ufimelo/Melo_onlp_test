@@ -81,9 +81,6 @@ const char* fan_mode_to_string(onlp_fan_mode_t mode) {
     }
 }
 
-// 在你的printf语句中使用
-printf("Mode: %s\n", fan_mode_to_string(info.mode));
-
 
 //In fan.h but not in fani.h (Melo)
 typedef struct onlp_fan_info_s {
