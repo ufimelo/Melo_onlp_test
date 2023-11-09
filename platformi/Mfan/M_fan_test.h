@@ -1,5 +1,13 @@
+/***************************************************
+    Melo Try onlp test
+    This header file is used in:
+        M_fan_test.c
+***************************************************/
+
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>  //for using memset()
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
 
