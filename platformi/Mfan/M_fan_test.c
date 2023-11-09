@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>  //for using memset()
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
 /**
@@ -98,31 +99,51 @@ extern int onlp_init(void);
 extern int onlp_denit(void);
 int main()
 {
-    printf("Start M_fan_test");
+    printf("Start M_fan_test\n");
 
-    printf("Start onlp initialization...");
+    printf("Start onlp initialization...\n");
     // onlp_psui_init();
     onlp_init();
-    printf("onlp initialization down!");
+    printf("onlp initialization down!\n");
 
     onlp_fan_info_t info = {0};
 
-    printf("Start Get fan Info");
-    printf("Get FAN 1 Info...");
-    onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, 1), &info);
-    printf(
-        "Status: %u\n"
-        "Caps:   %u\n"
-        "Mode:   %u\n"
-        "RPM:    %u\n"
-        "Percentage: %d\n", 
-        info.status, info.caps, info.mode, info.rpm, info.percentage
-    );
-    printf("Get FAN 1 Info done!");
+    printf("Start Get fan Info\n");
+    for(int fan_id = 1; fan_id <= 2; fan_id++){
+        printf("Get FAN %d Info...\n", fan_id);
 
-    printf("Get FAN 2 Info...");
-    onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, 2), &info);
+        if(onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, fan_id), &info) >= 0){
+            printf(
+                "FAN %d OID Header\n"
+                "ID: %u\n"
+                "Description: %s\n"
+                "POID: %u\n"
+                "COID: %s\n"
+                "----------------------",
+                fan_id, info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
+            )
 
+            printf(
+                "Status: %u\n"
+                "Caps:   %u\n"
+                "RPM:    %u\n"
+                "Percentage: %d\n"
+                "Mode:   %d\n"
+                "Model:    %s\n"
+                "Serial No.: %s\n", 
+                info.status, info.caps, info.rpm, info.percentage, info.mode, info.rpm, info.percentage
+            );
+
+            printf("Get FAN %d Info done!\n", fan_id);
+            memset(&info, 0, sizeof(info));
+        } 
+        else {
+            printf("Failed to get FAN %d Info\n", fan_id);
+         }
+     }
+        }
+
+    }
 
     onlp_denit();
     return 0;
