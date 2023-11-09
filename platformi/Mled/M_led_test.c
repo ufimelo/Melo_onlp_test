@@ -91,9 +91,6 @@ const char* led_mode_to_string(onlp_led_mode_t mode) {
     }
 }
 
-// 在你的printf语句中使用
-printf("LED Mode: %d (%s)\n", info.mode, led_mode_to_string(info.mode));
-
 
 /* led_id */
 enum onlp_led_id {
