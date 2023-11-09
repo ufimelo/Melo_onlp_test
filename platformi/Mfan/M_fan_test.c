@@ -76,6 +76,8 @@ const char* fan_mode_to_string(onlp_fan_mode_t mode) {
             return "FAST";
         case ONLP_FAN_MODE_MAX:
             return "MAX";
+        case ONLP_FAN_MODE_INVALID:
+            return "INVALID";
         default:
             return "UNKNOWN";
     }
