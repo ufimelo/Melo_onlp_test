@@ -98,13 +98,30 @@ extern int onlp_init(void);
 extern int onlp_denit(void);
 int main()
 {
+    printf("Start M_fan_test");
 
+    printf("Start onlp initialization...");
     // onlp_psui_init();
     onlp_init();
+    printf("onlp initialization down!");
+
     onlp_fan_info_t info = {0};
 
+    printf("Start Get fan Info");
+    printf("Get Fan 1 Info");
     onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, 1), &info);
+    printf(
+        "Status: %d\n
+        Caps:   %d\n
+        Mode:   %d\n
+        RPM:    %d\n
+        Percentage: %d\n", status, caps, mode, rpm, percentage
+    );
+
+    printf("Get Fan 2 Info");
     onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, 2), &info);
+
+
     onlp_denit();
     return 0;
 }
