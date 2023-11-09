@@ -154,14 +154,14 @@ int main()
                 info.status, info.caps, info.rpm, info.percentage, info.mode, fan_mode_to_string(info.mode), info.model, info.serial
             );
 
-            printf("Get FAN %d Info done!\n", fan_id);
+            printf("Get FAN %d Info Done!\n", fan_id);
             memset(&info, 0, sizeof(info));
         } 
         else {
             printf("[FAILED!] Failed To Get FAN %d INFO\n", fan_id);
         }
     }
-    printf("[DONE] Get FAN INFO Done!]\n");
+    printf("[DONE] Get FAN INFO Done!\n");
 
     onlp_denit();
     return 0;
