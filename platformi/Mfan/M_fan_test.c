@@ -4,7 +4,7 @@ This file should not be add in ONL prtoject*/
 //#include <stdio.h>
 //#include <stdlib.h>
 #include <string.h>  //for using memset()
-#include <M_fan_test.h>
+#include "M_fan_test.h"
 
 //#define ONLP_CONFIG_INFO_STR_MAX 64
 /**
