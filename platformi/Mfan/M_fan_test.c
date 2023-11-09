@@ -121,7 +121,7 @@ int main()
                 "COID: %s\n"
                 "----------------------",
                 fan_id, info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
-            )
+            );
 
             printf(
                 "Status: %u\n"
