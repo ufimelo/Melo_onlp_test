@@ -171,7 +171,7 @@ int main()
 
     if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &info) >= 0){
             printf(
-                "*********ONLP_LED_SYS_SYS OID Header*********\n"
+                "********* ONLP_LED_SYS_SYS *********\n"
                 "ID: %u\n"
                 "Description: %s\n"
                 "POID: %u\n"
