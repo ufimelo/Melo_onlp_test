@@ -130,7 +130,7 @@ int main()
     onlp_fan_info_t info = {0};
 
     printf("START GET FAN INFO\n");
-    for(int fan_id = 1; fan_id <= 6; fan_id++){
+    for(int fan_id = 1; fan_id <= 10; fan_id++){
         printf("Get FAN %d Info...\n", fan_id);
 
         if(onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, fan_id), &info) >= 0){
