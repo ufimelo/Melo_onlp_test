@@ -55,7 +55,7 @@ int main()
     {
         printf("**************************** Start Check [%s] Set Mode **************************** \n", led_id_to_string(id));
         for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){
-            if((onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode), &info) >= 0){
+            if(onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode) >= 0){
                 
                 //Skip mode that is not define in onlp_led_mode_e (by Melo)
                 if(strcmp(led_mode_to_string(mode), "UNKNOWN") == 0){
@@ -64,20 +64,27 @@ int main()
                 }
                 
                 printf(
-                    "------------ Set LED Mode to: %u [%s] / (typedef enum onlp_led_mode_e) mode = %d------------\n"
-                    "ID                 :           %u          \n"
-                    "Description        :           %s          \n"
-                    //"POID             :           %u          \n"
-                    //"COID             :           %s          \n"
+                    "------------ Set LED Mode to: %u [%s] / (typedef enum onlp_led_mode_e) mode => %d ------------\n"
+                    "ID                 :       %u          \n"
+                    "Description        :       %s          \n"
+                    //"POID             :       %u          \n"
+                    //"COID             :       %s          \n"
                     , info.mode, led_mode_to_string(mode), mode, info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
                 );
 
                 printf(
-                    "Status         :       %u (%s)     \n"
-                    "Caps           :       %u          \n"
-                    "Mode           :       %u (%s)     \n"
-                    //"Character    :       %d          \n"
+                    "Status             :       %u (%s)     \n"
+                    "Caps               :       %u          \n"
+                    "Mode               :       %u (%s)     \n"
+                    //"Character        :       %d          \n"
                     , info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode)/*, info.character*/
+                );
+
+                printf(
+                    "led_color      :       %d      \n"
+                    "led_blink      :       %d      \n"
+                    "led_on/off     :       %d      \n"
+                    , onlp_ledi_mode_set.led_color, onlp_ledi_mode_set.led_blink, onlp_ledi_mode_set.led_onoff
                 );
             }
             else{
