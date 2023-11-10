@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
+
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
 /**
