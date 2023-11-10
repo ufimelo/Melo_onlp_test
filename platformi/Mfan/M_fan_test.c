@@ -16,7 +16,7 @@ int main()
 
     onlp_fan_info_t info = {0};
 
-    printf("START GET FAN INFO\n");
+    printf("1. START GET FAN INFO\n");
     for(int fan_id = 1; fan_id <= 10; fan_id++){
         printf("Get FAN %d Info...\n", fan_id);
 

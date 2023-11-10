@@ -17,7 +17,7 @@ int main()
 
     printf("START GET LED INFO\n");
     onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &info);
-    onlp_ledi_status_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &rv);
+    //onlp_ledi_status_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &rv);
     onlp_ledi_hdr_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &hdr);
     onlp_ledi_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), 1);
     onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), ONLP_LED_MODE_YELLOW_BLINKING);
@@ -39,6 +39,31 @@ int main()
                 "Character: %d\n",
                 info.status, info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
             );
+    }
+    else{
+        printf("Failed to get LED info for ONLP_LED_SYS_SYS\n");
+    }
+
+    if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_FAN), &info) >= 0){
+            printf(
+                "********* ONLP_LED_SYS_FAN *********\n"
+                "ID: %u\n"
+                "Description: %s\n"
+                "POID: %u\n"
+                "COID: %s\n",
+                info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
+            );
+
+            printf(
+                "Status: %u\n"
+                "Caps:   %u\n"
+                "Mode:    %u (%s)\n"
+                "Character: %d\n",
+                info.status, info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
+            );
+    }
+    else{
+        printf("Failed to get LED info for ONLP_LED_SYS_FAN\n");
     }
 
     onlp_denit();
