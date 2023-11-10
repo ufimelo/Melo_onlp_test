@@ -51,13 +51,13 @@ int main()
     }
 
     //2
-    enum led_mode_to_string mode;
+    //enum led_mode_to_string mode;
     for(int id = 1; id < ONLP_LED_MAX; id++)
     {
         printf("Start Check LED set Mode");
         printf("**************************** Start Check [%s] set Mode ****************************\n", led_id_to_string(id));
-        for(mode = ONLP_LED_MODE_OFF; mode < ONLP_LED_MODE_MAX; mode++){
-            if(onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode), &info) >= 0){
+        for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){
+            if((onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode), &info) >= 0){
                 printf(
                     "********* %s *********\n"
                     "ID: %u\n"
