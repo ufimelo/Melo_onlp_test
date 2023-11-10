@@ -112,6 +112,14 @@ typedef struct onlp_fan_info_s {
 
 } onlp_fan_info_t;
 
+//FAN status
+typedef enum onlp_fan_status_e {
+    ONLP_FAN_STATUS_PRESENT = (1 << 0),
+    ONLP_FAN_STATUS_FAILED = (1 << 1),
+    ONLP_FAN_STATUS_B2F = (1 << 2),
+    ONLP_FAN_STATUS_F2B = (1 << 3),
+} onlp_fan_status_t;
+
 //Decode for info.status (by Melo)
 const char* fan_status_to_string(uint32_t status){
     static char result[256];
