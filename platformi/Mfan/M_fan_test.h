@@ -10,6 +10,7 @@
 #include <string.h>  //for using memset(), strcat(), strlen()
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
+#define ONLP_TOTAL_FAN_NUMBER 8
 
 /**
  * All OIDs have user-level description strings:
