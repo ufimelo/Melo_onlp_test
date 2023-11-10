@@ -25,11 +25,12 @@ int main()
     //onlp_led_id id;
 
     //1
+    printf("**************************** Start Check GET LED INFO ****************************\n", led_id_to_string(id));
     for(int id = 1; id < ONLP_LED_MAX; id++)
     {
         if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
             printf(
-                "********* %s *********\n"
+                "------------ GET [%s] INFO ------------\n"
                 "ID: %u\n"
                 "Description: %s\n"
                 "POID: %u\n"
@@ -61,11 +62,12 @@ int main()
                 
                 //Skip mode that is not define in onlp_led_mode_e (by Melo)
                 if(strcmp(led_mode_to_string(mode), "UNKNOWN") == 0){
+                    printf("Skip Mode: %s\n", led_mode_to_string(mode));
                     continue;
                 }
                 
                 printf(
-                    "********* mode: %u [%s] *********\n"
+                    "------------ mode: %u [%s] ------------\n"
                     "ID: %u\n"
                     "Description: %s\n",
                     //"POID: %u\n"
