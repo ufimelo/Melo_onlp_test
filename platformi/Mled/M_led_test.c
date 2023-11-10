@@ -84,7 +84,7 @@ int main()
                     "led_color      :       %d      \n"
                     "led_blink      :       %d      \n"
                     "led_on/off     :       %d      \n"
-                    , onlp_ledi_mode_set.led_color, onlp_ledi_mode_set.led_blink, onlp_ledi_mode_set.led_onoff
+                    , led_color, led_blink, led_onoff
                 );
             }
             else{
