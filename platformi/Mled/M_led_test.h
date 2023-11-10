@@ -52,6 +52,7 @@ typedef enum onlp_led_mode_e {
     ONLP_LED_MODE_PURPLE_BLINKING = 21,
     ONLP_LED_MODE_AUTO = 22,
     ONLP_LED_MODE_AUTO_BLINKING = 23,
+    ONLP_LED_MODE_MAX  //add byMelo
 } onlp_led_mode_t;
 
 //Melo Add for messages
@@ -108,6 +109,20 @@ enum onlp_led_id {
     ONLP_LED_FLEXE_1,
     ONLP_LED_MAX
 };
+
+//For onlp_led_id cahnge to string (by Melo)
+const char* led_id_to_string(enum onlp_led_id id){
+    switch (id){
+        case ONLP_LED_SYS_GNSS : return "ONLP_LED_SYS_GNSS";
+        case ONLP_LED_SYS_SYNC: return "ONLP_LED_SYS_SYNC";
+        case ONLP_LED_SYS_SYS : return "ONLP_LED_SYS_SYS";
+        case ONLP_LED_SYS_FAN : return "ONLP_LED_SYS_FAN";
+        case ONLP_LED_SYS_PWR : return "ONLP_LED_SYS_PWR";
+        case ONLP_LED_FLEXE_0 : return "ONLP_LED_FLEXE_0";
+        case ONLP_LED_FLEXE_1 : return "ONLP_LED_FLEXE_1";
+        default: return "Unknown LED ID";
+    }
+}
 
 /**
  * All OID objects contain this header as the first member.

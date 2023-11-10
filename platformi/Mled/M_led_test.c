@@ -18,18 +18,23 @@ int main()
     printf("START GET LED INFO\n");
     onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &info);
     //onlp_ledi_status_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &rv);
-    onlp_ledi_hdr_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &hdr);
-    onlp_ledi_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), 1);
+    //onlp_ledi_hdr_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &hdr);
+    //onlp_ledi_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), 1);
     onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), ONLP_LED_MODE_YELLOW_BLINKING);
+    
+    enum onlp_led_id id;
 
-    if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &info) >= 0){
+    //1
+    for(id = ONLP_LED_GNSS; id < ONLP_LED_MAX; id++)
+    {
+        if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
             printf(
-                "********* ONLP_LED_SYS_SYS *********\n"
+                "********* %s *********\n"
                 "ID: %u\n"
                 "Description: %s\n"
                 "POID: %u\n"
                 "COID: %s\n",
-                info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
+                led_id_to_string(id), info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
             );
 
             printf(
@@ -39,31 +44,41 @@ int main()
                 "Character: %d\n",
                 info.status, info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
             );
-    }
-    else{
-        printf("Failed to get LED info for ONLP_LED_SYS_SYS\n");
+        }
+        else{
+        printf("Failed to get LED info for %s\n", led_id_to_string(id));
+        }
     }
 
-    if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_FAN), &info) >= 0){
-            printf(
-                "********* ONLP_LED_SYS_FAN *********\n"
-                "ID: %u\n"
-                "Description: %s\n"
-                "POID: %u\n"
-                "COID: %s\n",
-                info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
-            );
+    //2
+    enum led_mode_to_string mode;
+    for(id = ONLP_LED_GNSS; id < ONLP_LED_MAX; id++)
+    {
+        printf("Start Check LED set Mode")
+        printf("**************************** Start Check [%s] set Mode ****************************\n", led_id_to_string(id));
+        for(mode = ONLP_LED_MODE_OFF; mode < ONLP_LED_MODE_MAX; mode++){
+            if(onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode), &info) >= 0){
+                printf(
+                    "********* %s *********\n"
+                    "ID: %u\n"
+                    "Description: %s\n"
+                    //"POID: %u\n"
+                    //"COID: %s\n",
+                    led_mode_to_string(mode), info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
+                );
 
-            printf(
-                "Status: %u\n"
-                "Caps:   %u\n"
-                "Mode:    %u (%s)\n"
-                "Character: %d\n",
-                info.status, info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
-            );
-    }
-    else{
-        printf("Failed to get LED info for ONLP_LED_SYS_FAN\n");
+                printf(
+                    "Status: %u\n"
+                    "Caps:   %u\n"
+                    "Mode:    %u (%s)\n"
+                    //"Character: %d\n",
+                    info.status, info.caps, info.mode, led_mode_to_string(info.mode)/*, info.character*/
+                );
+            }
+            else{
+                printf("Failed to get LED info for %s\n", led_id_to_string(id));
+            }
+        }
     }
 
     onlp_denit();
