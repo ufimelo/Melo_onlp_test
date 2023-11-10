@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdint.h>
+#include <stdint.h>  //for recognizeing unit32_t
 
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
