@@ -126,14 +126,14 @@ enum onlp_led_id {
 //For onlp_led_id cahnge to string (by Melo)
 const char* led_id_to_string(enum onlp_led_id id){
     switch (id){
-        case ONLP_LED_SYS_GNSS :    return "ONLP_LED_SYS_GNSS";
-        case ONLP_LED_SYS_SYNC:     return "ONLP_LED_SYS_SYNC";
-        case ONLP_LED_SYS_SYS :     return "ONLP_LED_SYS_SYS";
-        case ONLP_LED_SYS_FAN :     return "ONLP_LED_SYS_FAN";
-        case ONLP_LED_SYS_PWR :     return "ONLP_LED_SYS_PWR";
-        case ONLP_LED_FLEXE_0 :     return "ONLP_LED_FLEXE_0";
-        case ONLP_LED_FLEXE_1 :     return "ONLP_LED_FLEXE_1";
-        default:                    return "Unknown LED ID";
+        case ONLP_LED_RESERVED  :         return  "ONLP_LED_RESERVED";
+        case ONLP_LED_SYS_SYNC  :         return  "ONLP_LED_SYS_SYNC";
+        case ONLP_LED_SYS_SYS   :         return  "ONLP_LED_SYS_SYS";
+        case ONLP_LED_SYS_FAN   :         return  "ONLP_LED_SYS_FAN";
+        case ONLP_LED_SYS_PSU_0 :         return  "ONLP_LED_SYS_PSU_0";
+        case ONLP_LED_SYS_PSU_1 :         return  "ONLP_LED_SYS_PSU_1";
+        case ONLP_LED_SYS_ID    :         return  "ONLP_LED_SYS_ID";
+        default                 :         return   "Unknown LED ID";
     }
 }
 
