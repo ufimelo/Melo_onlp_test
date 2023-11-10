@@ -112,6 +112,24 @@ typedef struct onlp_fan_info_s {
 
 } onlp_fan_info_t;
 
+//Decode for info.status (by Melo)
+const char* fan_status_to_string(uint32_t status){
+    static char result[256];
+    result[0] = '\0';
+
+    status & ONLP_FAN_STATUS_PRESENT ? strcat(result, "Present, ") : 0;
+    status & ONLP_FAN_STATUS_FAILED ? strcat(result, "Failed, ") : 0;
+    status & ONLP_FAN_STATUS_B2F ? strcat(result, "B2F ") : 0;
+    status & ONLP_FAN_STATUS_F2B ? strcat(result, "F2B ") : 0;
+
+    // Remove trailing space if any
+    if (strlen(result) > 0 && result[strlen(result) - 1] == ' ') {
+        result[strlen(result) - 1] = '\0';
+    }
+
+    return result;
+}
+
 // In fani.h but in fan.h (Melo)
 extern int onlp_fani_info_get(onlp_oid_t id, onlp_fan_info_t* rv);
 // extern int onlp_psui_init(void);

@@ -31,14 +31,14 @@ int main()
             );
 
             printf(
-                "Status: %u\n"
+                "Status: %u (%s)\n"
                 "Caps:   %u\n"
                 "RPM:    %u\n"
                 "Percentage:    %d\n"
                 "Mode:   %d (%s)\n"
                 "Model:    %s\n"
                 "Serial No.: %s\n", 
-                info.status, info.caps, info.rpm, info.percentage, info.mode, fan_mode_to_string(info.mode), info.model, info.serial
+                info.status, fan_status_to_string(info.status), info.caps, info.rpm, info.percentage, info.mode, fan_mode_to_string(info.mode), info.model, info.serial
             );
 
             printf("Get FAN %d Info Done!\n", fan_id);
