@@ -55,6 +55,7 @@ typedef enum onlp_led_mode_e {
     ONLP_LED_MODE_MAX  //add byMelo
 } onlp_led_mode_t;
 
+
 //Melo Add for messages
 const char* led_mode_to_string(onlp_led_mode_t mode) {
     switch (mode) {

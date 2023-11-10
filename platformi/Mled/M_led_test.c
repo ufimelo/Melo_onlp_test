@@ -54,17 +54,23 @@ int main()
     //enum led_mode_to_string mode;
     for(int id = 1; id < ONLP_LED_MAX; id++)
     {
-        printf("Start Check LED set Mode");
+        printf("Start Check LED set Mode\n");
         printf("**************************** Start Check [%s] set Mode ****************************\n", led_id_to_string(id));
         for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){
             if((onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode), &info) >= 0){
+                
+                //Skip mode that is not define in onlp_led_mode_e (by Melo)
+                if(strcmp(led_mode_to_string(mode), "UNKNOWN") == 0){
+                    continue;
+                }
+                
                 printf(
-                    "********* %s *********\n"
+                    "********* mode: %u [%s] *********\n"
                     "ID: %u\n"
                     "Description: %s\n",
                     //"POID: %u\n"
                     //"COID: %s\n",
-                    led_mode_to_string(mode), info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
+                    info.mode, led_mode_to_string(mode), info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
                 );
 
                 printf(
