@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>  //for using memset()
+#include <string.h>  //for using memset(), strcat(), strlen()
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
 
