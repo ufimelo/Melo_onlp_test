@@ -16,6 +16,32 @@
 #define ONLP_OID_TABLE_SIZE 128
 #define ONLP_OID_TYPE_CREATE(_type, _id) ( ( (_type) << 24) | (_id))
 
+// onlp_led_status
+typedef enum onlp_led_status_e {
+    ONLP_LED_STATUS_PRESENT = (1 << 0),
+    ONLP_LED_STATUS_FAILED = (1 << 1),
+    ONLP_LED_STATUS_ON = (1 << 2),
+} onlp_led_status_t;
+/* <auto.end.enum(tag:led).define> */
+
+//Decode for info.status (by Melo)
+const char* led_status_to_string(uint32_t status){
+    static char result[256];
+    result[0] = '\0';
+
+    status & ONLP_LED_STATUS_PRESENT ? strcat(result, "Present, ") : 0;
+    status & ONLP_LED_STATUS_FAILED ? strcat(result, "Absent. ") : 0;
+    status & ONLP_LED_STATUS_ON ? strcat(result, "LED ON ") : 0;
+    
+    // Remove trailing space if any
+    if (strlen(result) > 0 && result[strlen(result) - 1] == ' ') {
+        result[strlen(result) - 1] = '\0';
+    }
+
+    return result;
+}
+
+
 /** onlp_oid_type */
 typedef enum onlp_oid_type_e {
     ONLP_OID_TYPE_SYS = 1,
@@ -27,6 +53,7 @@ typedef enum onlp_oid_type_e {
     ONLP_OID_TYPE_RTC = 7,
 } onlp_oid_type_t;
 /* <auto.end.enum(tag:oid).define> */
+
 
 typedef unsigned int uint32_t;
 

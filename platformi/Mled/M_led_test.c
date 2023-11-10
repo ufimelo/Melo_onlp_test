@@ -39,11 +39,11 @@ int main()
             );
 
             printf(
-                "Status: %u\n"
+                "Status: %u (%s)\n"
                 "Caps:   %u\n"
                 "Mode:    %u (%s)\n"
                 "Character: %d\n",
-                info.status, info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
+                info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
             );
         }
         else{
