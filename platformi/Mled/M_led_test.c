@@ -30,18 +30,18 @@ int main()
         if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
             printf(
                 "------------ Get [%s] Info ------------    \n"
-                "ID:            %u      \n"
-                "Description:   %s      \n"
-                "POID:          %u      \n"
-                "COID:          %s      \n"
+                "ID             :          %u               \n"
+                "Description    :          %s               \n"
+                "POID           :          %u               \n"
+                "COID           :          %s               \n"
                 , led_id_to_string(id), info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
             );
 
             printf(
-                "Status:        %u (%s)     \n"
-                "Caps:          %u          \n"
-                "Mode:          %u (%s)     \n"
-                "Character:     %d          \n"
+                "Status         :          %u (%s)          \n"
+                "Caps           :          %u               \n"
+                "Mode           :          %u (%s)          \n"
+                "Character      :          %d               \n"
                 , info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
             );
         }
@@ -65,18 +65,18 @@ int main()
                 
                 printf(
                     "------------ Set LED Mode to: %u [%s] / (typedef enum onlp_led_mode_e) mode = %d------------\n"
-                    "ID:            %u  \n"
-                    "Description:   %s  \n"
-                    //"POID:        %u  \n"
-                    //"COID:        %s  \n"
+                    "ID                 :           %u          \n"
+                    "Description        :           %s          \n"
+                    //"POID             :           %u          \n"
+                    //"COID             :           %s          \n"
                     , info.mode, led_mode_to_string(mode), mode, info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
                 );
 
                 printf(
-                    "Status: %u (%s)    \n"
-                    "Caps:   %u         \n"
-                    "Mode:    %u (%s)   \n"
-                    //"Character: %d    \n"
+                    "Status         :       %u (%s)     \n"
+                    "Caps           :       %u          \n"
+                    "Mode           :       %u (%s)     \n"
+                    //"Character    :       %d          \n"
                     , info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode)/*, info.character*/
                 );
             }
