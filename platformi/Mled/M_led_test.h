@@ -89,42 +89,24 @@ typedef enum onlp_led_mode_e {
 //Melo Add for messages
 const char* led_mode_to_string(onlp_led_mode_t mode) {
     switch (mode) {
-        case ONLP_LED_MODE_OFF:
-            return "OFF";
-        case ONLP_LED_MODE_ON:
-            return "ON";
-        case ONLP_LED_MODE_BLINKING:
-            return "BLINKING";
-        case ONLP_LED_MODE_RED:
-            return "RED";
-        case ONLP_LED_MODE_RED_BLINKING:
-            return "RED_BLINKING";
-        case ONLP_LED_MODE_ORANGE:
-            return "ORANGE";
-        case ONLP_LED_MODE_ORANGE_BLINKING:
-            return "ORANGE_BLINKING";
-        case ONLP_LED_MODE_YELLOW:
-            return "YELLOW";
-        case ONLP_LED_MODE_YELLOW_BLINKING:
-            return "YELLOW_BLINKING";
-        case ONLP_LED_MODE_GREEN:
-            return "GREEN";
-        case ONLP_LED_MODE_GREEN_BLINKING:
-            return "GREEN_BLINKING";
-        case ONLP_LED_MODE_BLUE:
-            return "BLUE";
-        case ONLP_LED_MODE_BLUE_BLINKING:
-            return "BLUE_BLINKING";
-        case ONLP_LED_MODE_PURPLE:
-            return "PURPLE";
-        case ONLP_LED_MODE_PURPLE_BLINKING:
-            return "PURPLE_BLINKING";
-        case ONLP_LED_MODE_AUTO:
-            return "AUTO";
-        case ONLP_LED_MODE_AUTO_BLINKING:
-            return "AUTO_BLINKING";
-        default:
-            return "UNKNOWN";
+        case ONLP_LED_MODE_OFF:                 return "LED OFF";
+        case ONLP_LED_MODE_ON:                  return "LED ON";
+        case ONLP_LED_MODE_BLINKING:            return "LED BLINKING";
+        case ONLP_LED_MODE_RED:                 return "LED RED";
+        case ONLP_LED_MODE_RED_BLINKING:        return "LED RED_BLINKING";
+        case ONLP_LED_MODE_ORANGE:              return "LED ORANGE";
+        case ONLP_LED_MODE_ORANGE_BLINKING:     return "LED ORANGE_BLINKING";
+        case ONLP_LED_MODE_YELLOW:              return "LED YELLOW";
+        case ONLP_LED_MODE_YELLOW_BLINKING:     return "LED YELLOW_BLINKING";
+        case ONLP_LED_MODE_GREEN:               return "LED GREEN";
+        case ONLP_LED_MODE_GREEN_BLINKING:      return "LED GREEN_BLINKING";
+        case ONLP_LED_MODE_BLUE:                return "LED BLUE";
+        case ONLP_LED_MODE_BLUE_BLINKING:       return "LED BLUE_BLINKING";
+        case ONLP_LED_MODE_PURPLE:              return "LED PURPLE";
+        case ONLP_LED_MODE_PURPLE_BLINKING:     return "LED PURPLE_BLINKING";
+        case ONLP_LED_MODE_AUTO:                return "LED AUTO";
+        case ONLP_LED_MODE_AUTO_BLINKING:       return "LED AUTO_BLINKING";
+        default:                                return "UNKNOWN";
     }
 }
 

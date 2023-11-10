@@ -25,29 +25,29 @@ int main()
     //onlp_led_id id;
 
     //1
-    printf("**************************** Start Check GET LED INFO ****************************\n");
+    printf("**************************** Start Check Get LED Info ****************************\n");
     for(int id = 1; id < ONLP_LED_MAX; id++)
     {
         if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
             printf(
-                "------------ GET [%s] INFO ------------\n"
+                "------------ Get [%s] Info ------------\n"
                 "ID: %u\n"
                 "Description: %s\n"
                 "POID: %u\n"
-                "COID: %s\n",
-                led_id_to_string(id), info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
+                "COID: %s\n"
+                ,led_id_to_string(id), info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
             );
 
             printf(
                 "Status: %u (%s)\n"
                 "Caps:   %u\n"
                 "Mode:    %u (%s)\n"
-                "Character: %d\n",
-                info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
+                "Character: %d\n"
+                ,info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
             );
         }
         else{
-        printf("Failed to get LED info for %s\n", led_id_to_string(id));
+        printf("[**Failed**] to get LED info for %s\n", led_id_to_string(id));
         }
     }
 
@@ -55,8 +55,7 @@ int main()
     //enum led_mode_to_string mode;
     for(int id = 1; id < ONLP_LED_MAX; id++)
     {
-        printf("Start Check LED set Mode\n");
-        printf("**************************** Start Check [%s] set Mode ****************************\n", led_id_to_string(id));
+        printf("**************************** Start Check [%s] Set Mode ****************************\n", led_id_to_string(id));
         for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){
             if((onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode), &info) >= 0){
                 
@@ -67,20 +66,20 @@ int main()
                 }
                 
                 printf(
-                    "------------ mode: %u [%s] ------------\n"
+                    "------------ Set LED Mode to: %u [%s] / (typedef enum onlp_led_mode_e) mode = %d------------\n"
                     "ID: %u\n"
-                    "Description: %s\n",
+                    "Description: %s\n"
                     //"POID: %u\n"
                     //"COID: %s\n",
-                    info.mode, led_mode_to_string(mode), info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
+                    ,info(mode), led_mode_to_string(mode), mode, info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
                 );
 
                 printf(
-                    "Status: %u\n"
+                    "Status: %u (%s)\n"
                     "Caps:   %u\n"
-                    "Mode:    %u (%s)\n",
+                    "Mode:    %u (%s)\n"
                     //"Character: %d\n",
-                    info.status, info.caps, info.mode, led_mode_to_string(info.mode)/*, info.character*/
+                    ,info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode)/*, info.character*/
                 );
             }
             else{
