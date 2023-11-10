@@ -25,7 +25,7 @@ int main()
     //onlp_led_id id;
 
     //1
-    printf("**************************** Start Check GET LED INFO ****************************\n", led_id_to_string(id));
+    printf("**************************** Start Check GET LED INFO ****************************\n");
     for(int id = 1; id < ONLP_LED_MAX; id++)
     {
         if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
