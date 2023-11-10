@@ -35,7 +35,7 @@ int main()
                 "Description: %s\n"
                 "POID: %u\n"
                 "COID: %s\n"
-                ,led_id_to_string(id), info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
+                , led_id_to_string(id), info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
             );
 
             printf(
@@ -43,7 +43,7 @@ int main()
                 "Caps:   %u\n"
                 "Mode:    %u (%s)\n"
                 "Character: %d\n"
-                ,info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
+                , info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
             );
         }
         else{
@@ -71,7 +71,7 @@ int main()
                     "Description: %s\n"
                     //"POID: %u\n"
                     //"COID: %s\n",
-                    ,info(mode), led_mode_to_string(mode), mode, info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
+                    , info.mode, led_mode_to_string(mode), mode, info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
                 );
 
                 printf(
@@ -79,7 +79,7 @@ int main()
                     "Caps:   %u\n"
                     "Mode:    %u (%s)\n"
                     //"Character: %d\n",
-                    ,info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode)/*, info.character*/
+                    , info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode)/*, info.character*/
                 );
             }
             else{
