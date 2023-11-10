@@ -113,27 +113,27 @@ const char* led_mode_to_string(onlp_led_mode_t mode) {
 
 /* led_id */
 enum onlp_led_id {
-    ONLP_LED_SYS_GNSS = 1,
-    ONLP_LED_SYS_SYNC,
+    ONLP_LED_RESERVED  = 0,
+    ONLP_LED_SYS_SYNC = 1,
     ONLP_LED_SYS_SYS,
     ONLP_LED_SYS_FAN,
-    ONLP_LED_SYS_PWR,
-    ONLP_LED_FLEXE_0,
-    ONLP_LED_FLEXE_1,
+    ONLP_LED_SYS_PSU_0,
+    ONLP_LED_SYS_PSU_1,
+    ONLP_LED_SYS_ID,
     ONLP_LED_MAX
 };
 
 //For onlp_led_id cahnge to string (by Melo)
 const char* led_id_to_string(enum onlp_led_id id){
     switch (id){
-        case ONLP_LED_SYS_GNSS : return "ONLP_LED_SYS_GNSS";
-        case ONLP_LED_SYS_SYNC: return "ONLP_LED_SYS_SYNC";
-        case ONLP_LED_SYS_SYS : return "ONLP_LED_SYS_SYS";
-        case ONLP_LED_SYS_FAN : return "ONLP_LED_SYS_FAN";
-        case ONLP_LED_SYS_PWR : return "ONLP_LED_SYS_PWR";
-        case ONLP_LED_FLEXE_0 : return "ONLP_LED_FLEXE_0";
-        case ONLP_LED_FLEXE_1 : return "ONLP_LED_FLEXE_1";
-        default: return "Unknown LED ID";
+        case ONLP_LED_SYS_GNSS :    return "ONLP_LED_SYS_GNSS";
+        case ONLP_LED_SYS_SYNC:     return "ONLP_LED_SYS_SYNC";
+        case ONLP_LED_SYS_SYS :     return "ONLP_LED_SYS_SYS";
+        case ONLP_LED_SYS_FAN :     return "ONLP_LED_SYS_FAN";
+        case ONLP_LED_SYS_PWR :     return "ONLP_LED_SYS_PWR";
+        case ONLP_LED_FLEXE_0 :     return "ONLP_LED_FLEXE_0";
+        case ONLP_LED_FLEXE_1 :     return "ONLP_LED_FLEXE_1";
+        default:                    return "Unknown LED ID";
     }
 }
 
