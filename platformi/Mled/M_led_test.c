@@ -22,10 +22,10 @@ int main()
     //onlp_ledi_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), 1);
     onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), ONLP_LED_MODE_YELLOW_BLINKING);
     
-    enum onlp_led_id id;
+    //onlp_led_id id;
 
     //1
-    for(id = ONLP_LED_GNSS; id < ONLP_LED_MAX; id++)
+    for(int id = 1; id < ONLP_LED_MAX; id++)
     {
         if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
             printf(
@@ -52,7 +52,7 @@ int main()
 
     //2
     enum led_mode_to_string mode;
-    for(id = ONLP_LED_GNSS; id < ONLP_LED_MAX; id++)
+    for(int id = 1; id < ONLP_LED_MAX; id++)
     {
         printf("Start Check LED set Mode");
         printf("**************************** Start Check [%s] set Mode ****************************\n", led_id_to_string(id));
