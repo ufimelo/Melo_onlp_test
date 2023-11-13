@@ -67,9 +67,7 @@ int main()
             }
             
             if(onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode) >= 0){
-                
-                               
-                
+
                 // print Set mode
                 printf(
                     "------------ Set LED Mode to: %d [%s = ONLP define (typedef enum onlp_led_mode_e) switch(case)] ------------     \n"
@@ -104,7 +102,7 @@ int main()
                 }else {printf("[Failed] Set Mode Failed!        \n");}
 
             }else{
-                printf("Failed to Set LED info for [%s]!       \n", led_id_to_string(id));
+                printf("Failed to Set [%s] to mode: [%d]!       \n", led_id_to_string(id), mode);
             }
         }
     }
