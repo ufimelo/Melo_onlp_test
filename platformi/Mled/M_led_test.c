@@ -80,6 +80,7 @@ int main()
         for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){  //LED Mode is about the color and blinling status of the LED (Melo's note)
             
             memset(&info, 0, sizeof(info));
+            onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode);
             
             if(onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode) >= 0){
                 
@@ -88,7 +89,7 @@ int main()
                     //printf("Skip Mode: %s\n", led_mode_to_string(mode));
                     continue;
                 }*/
-
+                onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info);
                 //Get LED Info
                 if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
                     continue;
