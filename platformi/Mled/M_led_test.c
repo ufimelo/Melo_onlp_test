@@ -56,13 +56,13 @@ int main()
     //2. check onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), ONLP_LED_MODE_YELLOW_BLINKING);
     for(int id = 1; id < ONLP_LED_MAX; id++)  //id represents where the LED location is (Melo's note)
     {
-        printf("**************************************** Start Check Set Mode [ID: %s] ****************************************     \n", led_id_to_string(id));
+        printf("********************************** Start Check Set Mode [ID: %s] **********************************     \n", led_id_to_string(id));
 
         for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){  //LED Mode is about the color and blinling status of the LED (Melo's note)
             
             //Skip mode that is not define in onlp_led_mode_e (by Melo)
             if(strcmp(led_mode_to_string(mode), "UNKNOWN") == 0){
-                //printf("Skip Mode: %s\n", led_mode_to_string(mode));
+                printf("Skip not defined Mode: %s\n", led_mode_to_string(mode));
                 continue;
             }
             
