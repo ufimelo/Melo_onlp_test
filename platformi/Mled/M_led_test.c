@@ -100,12 +100,12 @@ int main()
                     , info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode)/*, info.character*/
                 );
 
-                printf(
+                /*printf(
                     "led_color      :       %d      \n"
                     "led_blink      :       %d      \n"
                     "led_on/off     :       %d      \n"
                     , led_color, led_blink, led_onoff
-                );
+                );*/
             }
             else{
                 printf("Failed to get LED info for %s       \n", led_id_to_string(id));
