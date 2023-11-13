@@ -27,6 +27,9 @@ int main()
     printf("**************************** Start Check Get LED Info ****************************      \n");
     for(int id = 1; id < ONLP_LED_MAX; id++)
     {
+        
+        memset(&info, 0, sizeof(info));
+
         if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
             printf(
                 "------------ Get [%s] Info ------------    \n"
@@ -48,7 +51,6 @@ int main()
         else{
             printf("[Failed] Failed to get LED info for %s!\n", led_id_to_string(id));
         }
-        memset(&info, 0, sizeof(info));
     }
 
     //2. check onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), ONLP_LED_MODE_YELLOW_BLINKING);
@@ -76,6 +78,8 @@ int main()
                 ONLP_OID_TYPE_RTC = 7,
             } onlp_oid_type_t;*/
         for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){  //LED Mode is about the color and blinling status of the LED (Melo's note)
+            
+            memset(&info, 0, sizeof(info));
             
             onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info);
             
@@ -114,9 +118,6 @@ int main()
             else{
                 printf("Failed to get LED info for %s       \n", led_id_to_string(id));
             }
-
-            memset(&info, 0, sizeof(info));
-            
         }
     }
 
