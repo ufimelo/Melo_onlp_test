@@ -67,7 +67,7 @@ int main()
             
             //Skip mode that is not define in onlp_led_mode_e (by Melo)
             if(strcmp(led_mode_to_string(mode), "UNKNOWN") == 0){
-                printf("Skip not defined Mode: %s\n", led_mode_to_string(mode));
+                printf("Skip not defined Mode: %d is %s\n", mode, led_mode_to_string(mode));
                 continue;
             }
             
