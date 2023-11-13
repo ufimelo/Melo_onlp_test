@@ -4,8 +4,10 @@
 ***************************************************/
 #include "M_led_test.h"
 
-int invalid_modes[] = {1, 2, 10, 11, 12, 13};
+// Use only for led test
+int invalid_modes[] = {1, 2, 10, 11, 12, 13, 20, 21, 22, 23};
 int num_invalid_modes = sizeof(invalid_modes) / sizeof(invalid_modes[0]);
+int is_invalid_mode = 0;
 
 
 int main()
@@ -105,10 +107,17 @@ int main()
                 }else {printf("[Warning] Set [%s] to Mode [%s (%d)] Not Supported!        \n", led_id_to_string(id),led_mode_to_string(mode), mode);}
 
             }else{
+               
+               // check if set mode is supported
                for(int i = 0; i < num_invalid_modes; i++){
-                    if(mode != invalid_modes[i]){
-                        printf("Failed to Set [%s] to mode: [%d]!       \n", led_id_to_string(id), mode);
+                    if(mode == invalid_modes[i]){
+                        is_invalid_mode = 1;
+                        break;
                     }
+               }
+
+               if (!is_invalid_mode){
+                    printf("Failed to Set [%s] to mode: [%d]!       \n", led_id_to_string(id), mode);
                }
             }
         }
