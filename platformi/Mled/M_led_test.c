@@ -94,6 +94,7 @@ int main()
                     continue;
                 }else{ 
                     printf("[Failed] Failed to Get LED info for [%s] after set LED mode = [%d]!       \n", led_id_to_string(id), mode);
+                    break;
                 }
                 
                 printf(
