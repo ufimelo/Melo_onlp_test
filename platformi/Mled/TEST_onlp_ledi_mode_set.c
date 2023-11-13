@@ -4,7 +4,7 @@
 ***************************************************/
 #include "M_led_test.h"
 
-// Use only for led test
+// Use only for led mode set test
 int invalid_modes[] = {1, 2, 10, 11, 12, 13, 20, 21, 22, 23};
 int num_invalid_modes = sizeof(invalid_modes) / sizeof(invalid_modes[0]);
 int is_invalid_mode = 0;
@@ -26,39 +26,9 @@ int main()
     //onlp_ledi_hdr_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &hdr);
     //onlp_ledi_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), 1);
     //2. onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), ONLP_LED_MODE_YELLOW_BLINKING);
-    
 
-    //1. check onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &info);
-    printf("**************************** Start Check Get LED Info ****************************      \n");
-    for(int id = 1; id < ONLP_LED_MAX; id++)
-    {
-        
-        memset(&info, 0, sizeof(info));
 
-        if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
-            printf(
-                "------------ Get [%s] Info ------------    \n"
-                "ID             :          %u               \n"
-                "Description    :          %s               \n"
-                "POID           :          %u               \n"
-                "COID           :          %s               \n"
-                , led_id_to_string(id), info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
-            );
-
-            printf(
-                "Status         :          %u (%s)          \n"
-                "Caps           :          %u               \n"
-                "Mode           :          %u (%s)          \n"
-                "Character      :          %d               \n"
-                , info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode), info.character, info.mode
-            );
-        }
-        else{
-            printf("[Failed] Failed to Get LED info for [%s]!\n", led_id_to_string(id));
-        }
-    }
-
-    //2. check onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), ONLP_LED_MODE_YELLOW_BLINKING);
+    //2. test onlp_ledi_mode_set() API
     for(int id = 1; id < ONLP_LED_MAX; id++)  //id represents where the LED location is (Melo's note)
     {
         printf("********************************** Start Check Set Mode [ID: %s] **********************************     \n", led_id_to_string(id));
@@ -103,8 +73,8 @@ int main()
                 );
 
                 if(info.mode == mode){
-                    printf("[Passed] Set [%s] to Mode [%s (%d)] PASS!      \n", led_id_to_string(id),led_mode_to_string(mode), mode);
-                }else {printf("[Warning] Set [%s] to Mode [%s (%d)], Can't be Changed !        \n", led_id_to_string(id),led_mode_to_string(mode), mode);}
+                    printf("[Passed] Set [%s] to Mode [%s (%d)] PASS!      \n\n", led_id_to_string(id),led_mode_to_string(mode), mode);
+                }else {printf("[Warning] Set [%s] to Mode [%s (%d)], Can't be Changed !        \n\n", led_id_to_string(id),led_mode_to_string(mode), mode);}
 
             }else{
                
