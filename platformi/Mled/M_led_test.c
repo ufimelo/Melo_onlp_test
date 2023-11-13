@@ -49,7 +49,7 @@ int main()
             );
         }
         else{
-            printf("[Failed] Failed to get LED info for %s!\n", led_id_to_string(id));
+            printf("[Failed] Failed to Get LED info for [%s]!\n", led_id_to_string(id));
         }
     }
 
@@ -66,7 +66,7 @@ int main()
     };*/
     for(int id = 1; id < ONLP_LED_MAX; id++)  //id represents where the LED location is (Melo's note)
     {
-        printf("**************************** Start Check [%s] Set Mode ****************************     \n", led_id_to_string(id));
+        printf("**************************************** Start Check Set Mode [ID: %s] ****************************************     \n", led_id_to_string(id));
 
         /*typedef enum onlp_oid_type_e {
                 ONLP_OID_TYPE_SYS = 1,
@@ -81,8 +81,6 @@ int main()
             
             memset(&info, 0, sizeof(info));
             
-            onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info);
-            
             if(onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode) >= 0){
                 
                 //Skip mode that is not define in onlp_led_mode_e (by Melo)
@@ -90,33 +88,27 @@ int main()
                     //printf("Skip Mode: %s\n", led_mode_to_string(mode));
                     continue;
                 }*/
-                
-                printf(
-                    "------------ Set LED Mode to: %u [%s] / (typedef enum onlp_led_mode_e) switch(mode) = %d ------------     \n"
-                    //"ID                 :       %u          \n"
-                    //"Description        :       %s          \n"
-                    //"POID             :       %u          \n"
-                    //"COID             :       %s          \n"
-                    , info.mode, led_mode_to_string(mode), mode/*, info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
-                );
-                
-                printf(
-                    "Status             :       %u (%s)     \n"
-                    "Caps               :       %u          \n"
-                    "Mode               :       %u (%s)     \n"
-                    //"Character        :       %d          \n"
-                    , info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode)/*, info.character*/
-                );
 
-                /*printf(
-                    "led_color      :       %d      \n"
-                    "led_blink      :       %d      \n"
-                    "led_on/off     :       %d      \n"
-                    , led_color, led_blink, led_onoff
-                );*/
-            }
-            else{
-                printf("Failed to get LED info for %s       \n", led_id_to_string(id));
+                //Get LED Info
+                if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) > 0){
+                    continue;
+                }else{ 
+                    printf("[Failed] Failed to Get LED info for [%s] after set LED mode = [%d]!       \n", led_id_to_string(id), mode);
+                }
+                
+                printf(
+                    "------------ Set LED Mode to: %u [%s = ONLP define (typedef enum onlp_led_mode_e) switch(case) %d] ------------     \n"
+                    , info.mode, led_mode_to_string(mode), mode
+                );
+                
+                printf(
+                    "Status             :       %u (%s)                                                                             \n"
+                    "Caps               :       %u                                                                                  \n"
+                    "Mode               :       %u (%s) (ONLP define API [typedef enum onlp_led_mode_e] switch(mode) = %d)          \n"
+                    , info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode), mode
+                );
+            }else{
+                printf("Failed to Set LED info for [%s]!       \n", led_id_to_string(id));
             }
         }
     }
