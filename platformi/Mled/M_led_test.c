@@ -104,7 +104,7 @@ int main()
 
                 if(info.mode == mode){
                     printf("[Passed] Set [%s] to Mode [%s (%d)] PASS!      \n", led_id_to_string(id),led_mode_to_string(mode), mode);
-                }else {printf("[Warning] Set [%s] to Mode [%s (%d)] Not Supported!        \n", led_id_to_string(id),led_mode_to_string(mode), mode);}
+                }else {printf("[Warning] Set [%s] to Mode [%s (%d)], Can't be Changed !        \n", led_id_to_string(id),led_mode_to_string(mode), mode);}
 
             }else{
                
