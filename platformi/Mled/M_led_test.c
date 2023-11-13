@@ -4,6 +4,9 @@
 ***************************************************/
 #include "M_led_test.h"
 
+int invalid_modes[] = {1, 2, 10, 11, 12, 13};
+int num_invalid_modes = sizeof(invalid_modes) / sizeof(invalid_modes[0]);
+
 
 int main()
 {
@@ -102,7 +105,11 @@ int main()
                 }else {printf("[Warning] Set [%s] to Mode [%s (%d)] Not Supported!        \n", led_id_to_string(id),led_mode_to_string(mode), mode);}
 
             }else{
-                printf("Failed to Set [%s] to mode: [%d]!       \n", led_id_to_string(id), mode);
+               for(int i = 0; i < num_invalid_modes; i++){
+                    if(mode != invalid_modes[i]){
+                        printf("Failed to Set [%s] to mode: [%d]!       \n", led_id_to_string(id), mode);
+                    }
+               }
             }
         }
     }
