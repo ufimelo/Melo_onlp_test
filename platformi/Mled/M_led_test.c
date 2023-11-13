@@ -7,15 +7,15 @@
 
 int main()
 {
-    printf("START M_led_test    \n");
+    printf("[START] START M_led_test!        \n");
 
-    printf("START ONLP INITIALIZATION...    \n");
+    printf("START ONLP INITIALIZATION...        \n");
     onlp_init();
     onlp_led_info_t info = {0};
     onlp_oid_hdr_t hdr = {0};
     unsigned int rv = 0;
 
-    printf("START GET LED INFO  \n");
+    printf("START GET LED INFO!      \n");
     //1. onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &info);
     //onlp_ledi_status_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &rv);
     //onlp_ledi_hdr_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &hdr);
@@ -24,7 +24,7 @@ int main()
     
 
     //1. check onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), &info);
-    printf("**************************** Start Check Get LED Info ****************************  \n");
+    printf("**************************** Start Check Get LED Info ****************************      \n");
     for(int id = 1; id < ONLP_LED_MAX; id++)
     {
         if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
@@ -46,30 +46,50 @@ int main()
             );
         }
         else{
-        printf("[**Failed**] to get LED info for %s\n", led_id_to_string(id));
+        printf("[Failed] Failed to get LED info for %s!\n", led_id_to_string(id));
         }
     }
 
     //2. check onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), ONLP_LED_MODE_YELLOW_BLINKING);
-    for(int id = 1; id < ONLP_LED_MAX; id++)
+    /*enum onlp_led_id {
+        ONLP_LED_RESERVED  = 0,
+        ONLP_LED_SYS_SYNC = 1,
+        ONLP_LED_SYS_SYS,
+        ONLP_LED_SYS_FAN,
+        ONLP_LED_SYS_PSU_0,
+        ONLP_LED_SYS_PSU_1,
+        ONLP_LED_SYS_ID,
+        ONLP_LED_MAX
+    };*/
+    for(int id = 1; id < ONLP_LED_MAX; id++)  //id represents where the LED location is (Melo's note)
     {
-        printf("**************************** Start Check [%s] Set Mode **************************** \n", led_id_to_string(id));
-        for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){
+        printf("**************************** Start Check [%s] Set Mode ****************************     \n", led_id_to_string(id));
+
+        /*typedef enum onlp_oid_type_e {
+                ONLP_OID_TYPE_SYS = 1,
+                ONLP_OID_TYPE_THERMAL = 2,
+                ONLP_OID_TYPE_FAN = 3,
+                ONLP_OID_TYPE_PSU = 4,
+                ONLP_OID_TYPE_LED = 5,
+                ONLP_OID_TYPE_MODULE = 6,
+                ONLP_OID_TYPE_RTC = 7,
+            } onlp_oid_type_t;*/
+        for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){  //LED Mode is about the color and blinling status of the LED (Melo's note)
             if(onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode) >= 0){
                 
                 //Skip mode that is not define in onlp_led_mode_e (by Melo)
-                if(strcmp(led_mode_to_string(mode), "UNKNOWN") == 0){
+                /*if(strcmp(led_mode_to_string(mode), "UNKNOWN") == 0){
                     //printf("Skip Mode: %s\n", led_mode_to_string(mode));
                     continue;
-                }
+                }*/
                 
                 printf(
-                    "------------ Set LED Mode to: %u [%s] / (typedef enum onlp_led_mode_e) mode => %d ------------\n"
-                    "ID                 :       %u          \n"
-                    "Description        :       %s          \n"
+                    "------------ Set LED Mode to: %u [%s] / (typedef enum onlp_led_mode_e) mode => %d ------------     \n"
+                    //"ID                 :       %u          \n"
+                    //"Description        :       %s          \n"
                     //"POID             :       %u          \n"
                     //"COID             :       %s          \n"
-                    , info.mode, led_mode_to_string(mode), mode, info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
+                    , info.mode, led_mode_to_string(mode), mode/*, info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
                 );
 
                 printf(
@@ -88,7 +108,7 @@ int main()
                 );
             }
             else{
-                printf("Failed to get LED info for %s   \n", led_id_to_string(id));
+                printf("Failed to get LED info for %s       \n", led_id_to_string(id));
             }
         }
     }

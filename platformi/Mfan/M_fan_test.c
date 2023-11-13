@@ -7,7 +7,7 @@
 
 int main()
 {
-    printf("START M_fan_test    \n");
+    printf("[START] START M_fan_test!    \n");
 
     printf("START ONLP INITIALIZATION...    \n");
     // onlp_psui_init();
@@ -22,15 +22,16 @@ int main()
 
         if(onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, fan_id), &info) >= 0){
             printf(
-                "********* FAN %d OID Header *********    \n"
-                "ID             :   %u                  \n"
-                "Description    :   %s                  \n"
-                "POID           :   %u                  \n"
-                "COID           :   %s                  \n"
+                "********* FAN %d OID Header *********     \n"
+                "ID             :   %u          \n"
+                "Description    :   %s          \n"
+                "POID           :   %u          \n"
+                "COID           :   %s          \n"
                 , fan_id, info.hdr.id, info.hdr.description, info.hdr.poid, info.hdr.coids
             );
 
             printf(
+                "********* FAN %d Other Info *********    \n"
                 "Status         :   %u (%s)     \n"
                 "Caps           :   %u          \n"
                 "RPM            :   %u          \n"
@@ -45,7 +46,7 @@ int main()
             memset(&info, 0, sizeof(info));
         } 
         else {
-            printf("[FAILED!] Failed To Get FAN %d INFO \n", fan_id);
+            printf("[FAILED] Failed To Get FAN %d INFO! \n", fan_id);
         }
     }
     printf("[DONE] Get FAN INFO Done!   \n");
