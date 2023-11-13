@@ -70,14 +70,14 @@ int main()
 
                 // print Set mode
                 printf(
-                    "------------ Set LED Mode to: %d [%s = ONLP define (typedef enum onlp_led_mode_e) switch(case)] ------------     \n"
+                    "------------ Set LED Mode to: %d [%s] ------------     \n"   // ONLP define (typedef enum onlp_led_mode_e) switch(case)
                     , mode, led_mode_to_string(mode)
                 );
 
                 // print former LED Info
                   printf(
-                    "Former Status             :       %u (%s)          \n"
-                    "Former Mode               :       %u (%s)          \n"
+                    "Former Status      :       %u (%s)          \n"
+                    "Former Mode        :       %u (%s)          \n"
                     , info.status, led_status_to_string(info.status), info.mode, led_mode_to_string(info.mode)
                 );
 
@@ -92,14 +92,14 @@ int main()
                 
                 // print NEW LED Info
                 printf(
-                    "New Status                :       %u (%s)                                                                             \n"
-                    "New Mode                  :       %u (%s) (ONLP define API [typedef enum onlp_led_mode_e] switch(case) = %d)          \n"
+                    "New Status         :       %u (%s)                                                                             \n"
+                    "New Mode           :       %u (%s) (ONLP define API [typedef enum onlp_led_mode_e] switch(case) = %d)          \n"
                     , info.status, led_status_to_string(info.status), info.mode, led_mode_to_string(info.mode), mode
                 );
 
                 if(info.mode == mode){
                     printf("[Passed] Set [%s] to Mode [%s (%d)] PASS!      \n", led_id_to_string(id),led_mode_to_string(mode), mode);
-                }else {printf("[Failed] Set Mode Failed!        \n");}
+                }else {printf("[Warning] Set [%s] to Mode [%s (%d)] Not Supported!        \n", led_id_to_string(id),led_mode_to_string(mode), mode);}
 
             }else{
                 printf("Failed to Set [%s] to mode: [%d]!       \n", led_id_to_string(id), mode);
