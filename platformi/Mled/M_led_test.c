@@ -54,29 +54,10 @@ int main()
     }
 
     //2. check onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), ONLP_LED_MODE_YELLOW_BLINKING);
-    /*enum onlp_led_id {
-        ONLP_LED_RESERVED  = 0,
-        ONLP_LED_SYS_SYNC = 1,
-        ONLP_LED_SYS_SYS,
-        ONLP_LED_SYS_FAN,
-        ONLP_LED_SYS_PSU_0,
-        ONLP_LED_SYS_PSU_1,
-        ONLP_LED_SYS_ID,
-        ONLP_LED_MAX
-    };*/
     for(int id = 1; id < ONLP_LED_MAX; id++)  //id represents where the LED location is (Melo's note)
     {
         printf("**************************************** Start Check Set Mode [ID: %s] ****************************************     \n", led_id_to_string(id));
 
-        /*typedef enum onlp_oid_type_e {
-                ONLP_OID_TYPE_SYS = 1,
-                ONLP_OID_TYPE_THERMAL = 2,
-                ONLP_OID_TYPE_FAN = 3,
-                ONLP_OID_TYPE_PSU = 4,
-                ONLP_OID_TYPE_LED = 5,
-                ONLP_OID_TYPE_MODULE = 6,
-                ONLP_OID_TYPE_RTC = 7,
-            } onlp_oid_type_t;*/
         for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){  //LED Mode is about the color and blinling status of the LED (Melo's note)
             
             memset(&info, 0, sizeof(info));
@@ -88,14 +69,14 @@ int main()
                     //printf("Skip Mode: %s\n", led_mode_to_string(mode));
                     continue;
                 }*/
-                onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info);
+                //onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info);
                 //Get LED Info
-                /*if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
-                    continue;
+                if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
+                    printf("Get LED Info Successed after setting mode");
                 }else{ 
                     printf("[Failed] Failed to Get LED info for [%s] after set LED mode = [%d]!       \n", led_id_to_string(id), mode);
                     break;
-                }*/
+                }
                 
                 printf(
                     "------------ Set LED Mode to: %u [%s = ONLP define (typedef enum onlp_led_mode_e) switch(case) %d] ------------     \n"
@@ -105,9 +86,14 @@ int main()
                 printf(
                     "Status             :       %u (%s)                                                                             \n"
                     "Caps               :       %u                                                                                  \n"
-                    "Mode               :       %u (%s) (ONLP define API [typedef enum onlp_led_mode_e] switch(mode) = %d)          \n"
+                    "Mode               :       %u (%s) (ONLP define API [typedef enum onlp_led_mode_e] switch(case) = %d)          \n"
                     , info.status, led_status_to_string(info.status), info.caps, info.mode, led_mode_to_string(info.mode), mode
                 );
+
+                if(info.mode == mode){
+                    printf("[PASS] Set Mode PASS!      \n");
+                }else {printf("[Failed] Set Mode Failed!        \n");}
+
             }else{
                 printf("Failed to Set LED info for [%s]!       \n", led_id_to_string(id));
             }
