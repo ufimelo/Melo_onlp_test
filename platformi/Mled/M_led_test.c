@@ -84,14 +84,14 @@ int main()
                 }*/
                 
                 printf(
-                    "------------ Set LED Mode to: %u [%s] / (typedef enum onlp_led_mode_e) mode => %d ------------     \n"
+                    "------------ Set LED Mode to: %u [%s] / (typedef enum onlp_led_mode_e) switch(mode) = %d ------------     \n"
                     //"ID                 :       %u          \n"
                     //"Description        :       %s          \n"
                     //"POID             :       %u          \n"
                     //"COID             :       %s          \n"
                     , info.mode, led_mode_to_string(mode), mode/*, info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
                 );
-
+                onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info);
                 printf(
                     "Status             :       %u (%s)     \n"
                     "Caps               :       %u          \n"
