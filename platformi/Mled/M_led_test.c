@@ -80,7 +80,6 @@ int main()
         for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){  //LED Mode is about the color and blinling status of the LED (Melo's note)
             
             memset(&info, 0, sizeof(info));
-            onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode);
             
             if(onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode) >= 0){
                 
@@ -91,12 +90,12 @@ int main()
                 }*/
                 onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info);
                 //Get LED Info
-                if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
+                /*if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
                     continue;
                 }else{ 
                     printf("[Failed] Failed to Get LED info for [%s] after set LED mode = [%d]!       \n", led_id_to_string(id), mode);
                     break;
-                }
+                }*/
                 
                 printf(
                     "------------ Set LED Mode to: %u [%s = ONLP define (typedef enum onlp_led_mode_e) switch(case) %d] ------------     \n"
