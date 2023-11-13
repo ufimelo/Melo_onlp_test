@@ -72,7 +72,7 @@ int main()
                 //onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info);
                 //Get LED Info
                 if(onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info) >= 0){
-                    printf("Get LED Info Successed after setting mode");
+                    printf("Get LED Info Successed after setting mode       \n");
                 }else{ 
                     printf("[Failed] Failed to Get LED info for [%s] after set LED mode = [%d]!       \n", led_id_to_string(id), mode);
                     break;
@@ -91,7 +91,7 @@ int main()
                 );
 
                 if(info.mode == mode){
-                    printf("[PASS] Set Mode PASS!      \n");
+                    printf("[Passed] Set [%s] to Mode [%s (%d)] PASS!      \n", led_id_to_string(id),led_mode_to_string(mode), mode);
                 }else {printf("[Failed] Set Mode Failed!        \n");}
 
             }else{
