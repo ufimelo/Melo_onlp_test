@@ -46,8 +46,9 @@ int main()
             );
         }
         else{
-        printf("[Failed] Failed to get LED info for %s!\n", led_id_to_string(id));
+            printf("[Failed] Failed to get LED info for %s!\n", led_id_to_string(id));
         }
+        memset(&info, 0, sizeof(info));
     }
 
     //2. check onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, ONLP_LED_SYS_SYS), ONLP_LED_MODE_YELLOW_BLINKING);
@@ -75,6 +76,9 @@ int main()
                 ONLP_OID_TYPE_RTC = 7,
             } onlp_oid_type_t;*/
         for(int mode = 0; mode < ONLP_LED_MODE_MAX; mode++){  //LED Mode is about the color and blinling status of the LED (Melo's note)
+            
+            onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info);
+            
             if(onlp_ledi_mode_set(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), mode) >= 0){
                 
                 //Skip mode that is not define in onlp_led_mode_e (by Melo)
@@ -91,7 +95,7 @@ int main()
                     //"COID             :       %s          \n"
                     , info.mode, led_mode_to_string(mode), mode/*, info.hdr.id, info.hdr.description/*, info.hdr.poid, info.hdr.coids*/
                 );
-                onlp_ledi_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_LED, id), &info);
+                
                 printf(
                     "Status             :       %u (%s)     \n"
                     "Caps               :       %u          \n"
@@ -110,6 +114,9 @@ int main()
             else{
                 printf("Failed to get LED info for %s       \n", led_id_to_string(id));
             }
+
+            memset(&info, 0, sizeof(info));
+            
         }
     }
 
