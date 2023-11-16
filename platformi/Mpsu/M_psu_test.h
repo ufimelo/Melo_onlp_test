@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define ONLP_TOTAL_PSU_NUMBER 2
+#define ONLP_TOTAL_PSU_NUMBER 3
 #define ONLP_CONFIG_INFO_STR_MAX 64
 /**
  * All OIDs have user-level description strings:
