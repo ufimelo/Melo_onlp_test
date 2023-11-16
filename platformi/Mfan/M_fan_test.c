@@ -31,7 +31,7 @@ int main()
             );
 
             printf(
-                "********* FAN %d Other Info *********    \n"
+                "--------- FAN %d Other Info ---------    \n"
                 "Status         :   %u (%s)     \n"
                 "Caps           :   %u          \n"
                 "RPM            :   %u          \n"
