@@ -7,7 +7,7 @@
 
 int main()
 {
-    printf("[START] START M_fan_test!    \n");
+    printf("[START] START M_fan_test.    \n");
     printf("START ONLP INITIALIZATION...    \n");
     // onlp_psui_init();
     onlp_init();
@@ -21,7 +21,7 @@ int main()
 
         if(onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, fan_id), &info) >= 0){
             printf(
-                "********* FAN %d OID Header *********     \n"
+                "************* FAN %d OID Header *************     \n"
                 "ID             :   %u          \n"
                 "Description    :   %s          \n"
                 "POID           :   %u          \n"

@@ -14,7 +14,7 @@ int main()
     for(int psu_id = 1; psu_id <= ONLP_TOTAL_PSU_NUMBER; psu_id++){
         if(onlp_psui_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_PSU, psu_id), &info) >= 0){
             printf(
-                "********* PSU %d OID Header *********     \n"
+                "************* PSU %d OID Header *************     \n"
                 "ID             :   %u          \n"
                 "Description    :   %s          \n"
                 "POID           :   %u          \n"
