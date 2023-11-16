@@ -8,7 +8,6 @@
 int main()
 {
     printf("[START] START M_fan_test!    \n");
-
     printf("START ONLP INITIALIZATION...    \n");
     // onlp_psui_init();
     onlp_init();
@@ -16,7 +15,7 @@ int main()
 
     onlp_fan_info_t info = {0};
 
-    printf("1. START GET FAN INFO   \n");
+    printf("[START] START GET FAN INFO   \n");
     for(int fan_id = 1; fan_id <= ONLP_TOTAL_FAN_NUMBER; fan_id++){
         printf("Get FAN %d Info...  \n", fan_id);
 
