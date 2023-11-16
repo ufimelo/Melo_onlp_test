@@ -45,15 +45,21 @@ typedef struct onlp_oid_hdr_s {
     onlp_oid_table_t coids;
 } onlp_oid_hdr_t;
 
-typedef struct onlp_psu_info_t {
+
+typedef enum onlp_fan_mode_e {
+    ONLP_FAN_MODE_OFF,
+    ONLP_FAN_MODE_SLOW,
+    ONLP_FAN_MODE_NORMAL,
+    ONLP_FAN_MODE_FAST,
+    ONLP_FAN_MODE_MAX,
+    ONLP_FAN_MODE_LAST = ONLP_FAN_MODE_MAX,
+    ONLP_FAN_MODE_COUNT,
+    ONLP_FAN_MODE_INVALID = -1,
+} onlp_fan_mode_t;
+
+typedef struct onlp_fan_info_s {
     /** OID Header */
     onlp_oid_hdr_t hdr;
-
-    /* Model */
-    char model[ONLP_CONFIG_INFO_STR_MAX];
-
-    /* Serial Number */
-    char serial[ONLP_CONFIG_INFO_STR_MAX];
 
     /* Status */
     uint32_t status;
@@ -61,37 +67,40 @@ typedef struct onlp_psu_info_t {
     /* Capabilities */
     uint32_t caps;
 
-    /* millivolts */
-    int mvin;
-    int mvout;
+    /* Current fan speed, in RPM, if available */
+    int rpm;
 
-    /* milliamps */
-    int miin;
-    int miout;
+    /* Current fan percentage, if available */
+    int percentage;
 
-    /* milliwatts */
-    int mpin;
-    int mpout;
+    /* Current fan mode, if available  */
+    onlp_fan_mode_t mode;
 
-} onlp_psu_info_t;
+    /* Model (if applicable) */
+    char model[ONLP_CONFIG_INFO_STR_MAX];
+
+    /* Serial Number (if applicable) */
+    char serial[ONLP_CONFIG_INFO_STR_MAX];
+
+} onlp_fan_info_t;
 
 
-extern int onlp_psui_info_get(onlp_oid_t id, onlp_psu_info_t* info);
+
+extern int onlp_fani_info_get(onlp_oid_t id, onlp_fan_info_t* rv);
 // extern int onlp_psui_init(void);
 extern int onlp_init(void);
 extern int onlp_denit(void);
-
 int main()
 {
 
     // onlp_psui_init();
     onlp_init();
-    printf("init good good");
-    onlp_psu_info_t info = {0};
+    printf("hello world\n");
+    onlp_fan_info_t info = {0};
 
-    onlp_psui_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_PSU, 1), &info);
-    printf("info get good good");
-
+    onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, 1), &info);
+    onlp_fani_info_get(ONLP_OID_TYPE_CREATE(ONLP_OID_TYPE_FAN, 2), &info);
+    printf("check hello world\n");
     onlp_denit();
     return 0;
 }
