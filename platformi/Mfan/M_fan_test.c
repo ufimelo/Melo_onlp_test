@@ -12,7 +12,7 @@ int main()
     printf("START ONLP INITIALIZATION...    \n");
     // onlp_psui_init();
     onlp_init();
-    printf("ONLP INITIALIZATION DOWN!   \n");
+    printf("ONLP INITIALIZATION DONE!   \n");
 
     onlp_fan_info_t info = {0};
 
