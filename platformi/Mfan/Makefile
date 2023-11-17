@@ -15,10 +15,10 @@ config.h: config.txt
 
 
 all: config.h
-	gcc -g3 -lm -o 1_onlp_fani_init_RESULT 1_onlp_fani_init.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
+#	gcc -g3 -lm -o 1_onlp_fani_init_RESULT 1_onlp_fani_init.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
 	gcc -g3 -lm -o 2_onlp_fani_info_get_RESULT 2_onlp_fani_info_get.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
-	gcc -g3 -lm -o 3_onlp_fani_status_get_RESULT 3_onlp_fani_status_get.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
-	gcc -g3 -lm -o 4_onlp_fani_hdr_get_RESULT 4_onlp_fani_hdr_get.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
+#	gcc -g3 -lm -o 3_onlp_fani_status_get_RESULT 3_onlp_fani_status_get.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
+#	gcc -g3 -lm -o 4_onlp_fani_hdr_get_RESULT 4_onlp_fani_hdr_get.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
 
 
 clean:
