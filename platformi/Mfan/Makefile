@@ -6,7 +6,7 @@
 .PHONY: help all clean
 
 help:
-	@echo "Hey Bro! This is your knidest Makefile Angel, my name is Yvonne <3"
+	@echo "Hey Darling! This is your kindest Makefile Angel, my name is Yvonne <3"
 	@echo "Please Type: make [help | all | config.h | clean]"
 
 
