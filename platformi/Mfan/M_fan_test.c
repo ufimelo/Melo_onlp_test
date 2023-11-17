@@ -3,6 +3,7 @@
     This file should not be add in ONL prtoject
 ***************************************************/
 #include "M_fan_test.h"
+#include "config.h"
 
 
 int main()
