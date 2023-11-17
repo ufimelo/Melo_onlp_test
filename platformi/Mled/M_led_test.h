@@ -87,6 +87,9 @@ typedef enum onlp_led_mode_e {
 
 
 //Melo Add for messages
+const char* onlp_led_mode_t[] = {
+    
+}
 const char* led_mode_to_string(onlp_led_mode_t mode) {
     switch (mode) {
         case ONLP_LED_MODE_OFF:                 return "LED OFF";

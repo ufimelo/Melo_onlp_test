@@ -1,0 +1,11 @@
+
+# Platform
+PLATFORM = s91890-32xs
+
+# FAN Configuration
+ONLP_TOTAL_FAN_NUMBER = 8
+
+# PSU Configuration
+
+# LED Configuration
+

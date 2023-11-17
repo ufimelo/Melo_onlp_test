@@ -10,7 +10,40 @@
 #include <string.h>  //for using memset(), strcat(), strlen()
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
-#define ONLP_TOTAL_FAN_NUMBER 8
+
+//read config file
+void readConfigFile(const char *filename) {
+    FILE *file = fopen(filename, "r");
+    if (!file) {
+        perror("Error opening file");
+        exit(EXIT_FAILURE);
+    }
+
+    char line[256];
+
+    while (fgets(line, sizeof(line), file)) {
+        // Ignore comments and empty lines
+        if (line[0] == '#' || line[0] == '\n') {
+            continue;
+        }
+
+        // Parse each line and extract configuration data
+        char *key = strtok(line, "=");
+        char *value = strtok(NULL, "=");
+
+        // Remove leading and trailing whitespaces from key and value
+        key = strtok(key, " \t\n\r");
+        value = strtok(value, " \t\n\r");
+
+        // Process key and value as needed
+        printf("Key: %s, Value: %s\n", key, value);
+    }
+
+    fclose(file);
+}
+
+
+
 
 /**
  * All OIDs have user-level description strings:
