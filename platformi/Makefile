@@ -14,8 +14,8 @@ FAN: config.h
 
 
 LED: config.h
-	gcc -g3 -lm -o test_led_info_get_result TEST_onlp_ledi_info_get.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
-	gcc -g3 -lm -o test_led_mode_set_result TEST_onlp_ledi_mode_set.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
+	gcc -g3 -lm -o test_led_info_get_result ./Mled/TEST_onlp_ledi_info_get.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
+	gcc -g3 -lm -o test_led_mode_set_result ./Mled/TEST_onlp_ledi_mode_set.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
 
 
 clean:
