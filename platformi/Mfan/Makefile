@@ -1,10 +1,10 @@
 
 # config.h: config.txt
-    # sed -n -e 's/^\s*ONLP_TOTAL_FAN_NUMBER\s*=\s*\(.*\)\s*$$/#define ONLP_TOTAL_FAN_NUMBER \1/p' config.txt > config.h
-    # Only translate ONLP_TOTAL_FAN_NUMBER into config.h
+	# sed -n -e 's/^\s*ONLP_TOTAL_FAN_NUMBER\s*=\s*\(.*\)\s*$$/#define ONLP_TOTAL_FAN_NUMBER \1/p' config.txt > config.h
+	# Only translate ONLP_TOTAL_FAN_NUMBER into config.h
 
 config.h: config.txt
-    sed -n -e 's/^\s*\([^#]\+\)\s*=\s*\(.*\)\s*$$/#define \1 \2/p' config.txt > config.h
+	sed -n -e 's/^\s*\([^#]\+\)\s*=\s*\(.*\)\s*$$/#define \1 \2/p' config.txt > config.h
 
 	
 
