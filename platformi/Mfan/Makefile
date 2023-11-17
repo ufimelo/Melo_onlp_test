@@ -4,7 +4,7 @@
 	# Only translate ONLP_TOTAL_FAN_NUMBER into config.h
 
 help:
-	echo "Hi World:""
+	@echo "Hi World:""
 
 config.h: config.txt
 	sed -n -e 's/^\s*\([^#]\+\)\s*=\s*\(.*\)\s*$$/#define \1 \2/p' config.txt > config.h
