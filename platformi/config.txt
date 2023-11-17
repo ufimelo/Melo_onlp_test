@@ -7,7 +7,7 @@ BSP_VERSION = 0.0.0
 
 
 # FAN Configuration
-ONLP_TOTAL_FAN_NUMBER = 8
+#ONLP_TOTAL_FAN_NUMBER = 8
 
 
 # LED Configuration
