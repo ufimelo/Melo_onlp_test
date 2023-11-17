@@ -1,8 +1,19 @@
 # Platform
 PLATFORM = s91890-32xs
 
+
 # BSP version
 BSP_VERSION = 0.0.0 
 
+
 # FAN Configuration
 ONLP_TOTAL_FAN_NUMBER = 8
+
+
+# LED Configuration
+
+
+# PSU Configuration
+
+
+# LED Configuration
