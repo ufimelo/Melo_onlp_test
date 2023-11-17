@@ -6,7 +6,7 @@
 .PHONY: help all clean
 
 help:
-	@echo "type make [help | config.h | all | clean]"
+	@echo "Plz Type: make [help | config.h | all | clean]"
 
 
 config.h: config.txt
