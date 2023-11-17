@@ -62,6 +62,7 @@ typedef enum onlp_oid_type_e {
     ONLP_OID_TYPE_LED = 5,
     ONLP_OID_TYPE_MODULE = 6,
     ONLP_OID_TYPE_RTC = 7,
+    MMMAX
 } onlp_oid_type_t;
 /* <auto.end.enum(tag:oid).define> */
 
