@@ -3,5 +3,5 @@
 
 
 int main(){
-    onlp_fani_init();
+    //onlp_fani_init();
 }
