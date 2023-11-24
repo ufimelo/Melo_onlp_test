@@ -46,8 +46,8 @@ int read_ufi_json(const char *filename){
     } 
   
     // access the JSON data 
-    cJSON *name = cJSON_GetObjectItemCaseSensitive(json, "name"); 
-    if (cJSON_IsString(name) && (name->valuestring != NULL)) { 
+    cJSON *ufi_config = cJSON_GetObjectItemCaseSensitive(json, "name"); 
+    if (cJSON_IsString(ufi_config) && (name->valuestring != NULL)) { 
         printf("Name: %s\n", name->valuestring); 
     } 
   
