@@ -22,10 +22,10 @@
 
 // Read configure information bu JASON (Melo)
 int read_ufi_json(const char *filename){
-    // open the file 
+     // open the file 
     FILE *fp = fopen(filename, "r"); 
     if (fp == NULL) { 
-        printf("Error: Unable to open the file.\n"); 
+        printf("Error: Unable to open the file %s.\n", filename); 
         return 1; 
     } 
   
@@ -46,9 +46,9 @@ int read_ufi_json(const char *filename){
     } 
   
     // access the JSON data 
-    cJSON *ufi_platform = cJSON_GetObjectItemCaseSensitive(json, "platform"); 
-    if (cJSON_IsString(ufi_platform) && (ufi_platform->valuestring != NULL)) { 
-        printf("Name: %s\n", ufi_platform->valuestring); 
+    cJSON *name = cJSON_GetObjectItemCaseSensitive(json, "name"); 
+    if (cJSON_IsString(name) && (name->valuestring != NULL)) { 
+        printf("Name: %s\n", name->valuestring); 
     } 
   
     // delete the JSON object 
