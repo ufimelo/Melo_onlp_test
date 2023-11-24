@@ -3,7 +3,6 @@
     This file should not be add in ONL prtoject
 ***************************************************/
 #include "M_led_test.h"
-#include <cjson/cJSON.h>
 
 int main()
 {
