@@ -23,7 +23,7 @@
 // Read configure information bu JASON (Melo)
 int read_ufi_json(const char *filename){
     // open the file 
-    FILE *fp = fopen("config.json", "r"); 
+    FILE *fp = fopen(filename, "r"); 
     if (fp == NULL) { 
         printf("Error: Unable to open the file.\n"); 
         return 1; 
