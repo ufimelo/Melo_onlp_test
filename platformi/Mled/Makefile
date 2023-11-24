@@ -1,6 +1,7 @@
 all:
 #	gcc -g3 -lm -o 1_onlp_ledi_init_RESULT 1_onlp_ledi_init.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
-	gcc -g3 -lm -o 2_onlp_ledi_info_get_RESULT 2_onlp_ledi_info_get.c -I./cjson -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
+#	gcc -g3 -lm -o 2_onlp_ledi_info_get_RESULT 2_onlp_ledi_info_get.c -I./cjson -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
+	gcc -g3 -lm -o 2_onlp_ledi_info_get_RESULT 2_onlp_ledi_info_get.c cjson/cJSON.c -I./cjson -L./lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
 #	gcc -g3 -lm -o 3_onlp_ledi_status_get_RESULT 3_onlp_ledi_status_get.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
 #	gcc -g3 -lm -o 4_onlp_ledi_hdr_get_RESULT 4_onlp_ledi_hdr_get.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
 #	gcc -g3 -lm -o 5_onlp_ledi_set_RESULT 5_onlp_ledi_set.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp

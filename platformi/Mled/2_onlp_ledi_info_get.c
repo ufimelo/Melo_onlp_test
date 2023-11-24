@@ -6,6 +6,8 @@
 
 int main()
 {
+    read_ufi_json();
+    
     printf("[START] START M_led_test!        \n");
 
     printf("START ONLP INITIALIZATION...        \n");
