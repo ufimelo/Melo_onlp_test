@@ -1,3 +1,5 @@
+.PHONY: all clean
+
 all:
 #	gcc -g3 -lm -o 1_onlp_ledi_init_RESULT 1_onlp_ledi_init.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
 #	gcc -g3 -lm -o 2_onlp_ledi_info_get_RESULT 2_onlp_ledi_info_get.c -I./cjson -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
@@ -10,3 +12,6 @@ all:
 # -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp => 代表要到-L/lib/x86_64-linux-gnu/ 路徑下查找文件
 
 #2, 6 有
+
+clean:
+	rm -f *.o *~ core config.h *_RESULT
