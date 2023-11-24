@@ -21,7 +21,7 @@
 #define ONLP_OID_TYPE_CREATE(_type, _id) ( ( (_type) << 24) | (_id))
 
 // Read configure information bu JASON (Melo)
-int read_ufi_json(){
+int read_ufi_json(const char *filename){
     // open the file 
     FILE *fp = fopen("config.json", "r"); 
     if (fp == NULL) { 

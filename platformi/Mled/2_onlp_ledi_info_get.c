@@ -6,7 +6,7 @@
 
 int main()
 {
-    read_ufi_json();
+    read_ufi_json("config.json");
     
     printf("[START] START M_led_test!        \n");
 
