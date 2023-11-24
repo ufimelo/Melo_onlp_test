@@ -15,9 +15,6 @@
 
 #clean:
 #	rm -f *.o *~ core config.h *_RESULT
-
-
-
 .PHONY all clean
 
 CC = gcc
