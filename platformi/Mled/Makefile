@@ -15,21 +15,20 @@
 
 #clean:
 #	rm -f *.o *~ core config.h *_RESULT
-.PHONY all clean
+.PHONY: all clean
 
 CC = gcc
 CFLAGS = -g3 -lm
 LIBS = -L./lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
 SRC_DIR = .
-OBJ_DIR = ./OBJ_DIR
+OBJ_DIR = ./obj
 
 # 列举所有源文件
 SOURCES = $(wildcard $(SRC_DIR)/*.c)
 # 生成所有源文件对应的目标文件
-OBJECTS = $(patsubst $(SRC_DIR)/%.c, $(oBJ_DIR)/%.o, $(SOURCES))
+OBJECTS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SOURCES))
 # 列举所有目标文件
 TARGETS = $(patsubst $(SRC_DIR)/%.c, %_RESULT, $(SOURCES))
-
 
 all: $(TARGETS)
 
