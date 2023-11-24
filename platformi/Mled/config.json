@@ -1,5 +1,4 @@
 {
-    "test name": "Led Test",
     "platform": "s7801",
     "name": "Melo",
 }
