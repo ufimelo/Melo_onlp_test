@@ -20,8 +20,9 @@
 #define ONLP_OID_TABLE_SIZE 128
 #define ONLP_OID_TYPE_CREATE(_type, _id) ( ( (_type) << 24) | (_id))
 
+
 // Read configure information bu JASON (Melo)
-int read_ufi_json(const char *filename){
+int read_ufi_json(const char *filename, const char *print_info){
      // open the file 
     FILE *fp = fopen(filename, "r"); 
     if (fp == NULL) { 
@@ -46,9 +47,9 @@ int read_ufi_json(const char *filename){
     } 
   
     // access the JSON data 
-    cJSON *ufi_config = cJSON_GetObjectItemCaseSensitive(json, "platform"); 
+    cJSON *ufi_config = cJSON_GetObjectItemCaseSensitive(json, print_info); 
     if (cJSON_IsString(ufi_config) && (ufi_config->valuestring != NULL)) { 
-        printf("Platform: %s\n", ufi_config->valuestring); 
+        printf("%s: %s\n", print_info, ufi_config->valuestring); 
     } 
   
     // delete the JSON object 

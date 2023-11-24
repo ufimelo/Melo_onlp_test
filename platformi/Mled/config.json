@@ -1,5 +1,5 @@
 {
+    "test name": "Led Test",
     "platform": "s7801",
-    "age": 30,
-    "email": "john.doe@example.com"
+    "name": "Melo",
 }
