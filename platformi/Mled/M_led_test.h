@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>  //for recognizeing unit32_t
-#include <cjson/cJSON.h>  //for reading json file using cJSON library
+#include "cjson/cJSON.h"  //for reading json file using cJSON library
 
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
