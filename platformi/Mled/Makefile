@@ -21,7 +21,7 @@ CC = gcc
 CFLAGS = -g3 -lm
 LIBS = -L./lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
 SRC_DIR = .
-OBJ_DIR = ./obj
+OBJ_DIR = ./OBJ_DIR
 
 # 列举所有源文件
 SOURCES = $(wildcard $(SRC_DIR)/*.c)
