@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>  //for recognizeing unit32_t
+#include <cjson/cJSON.h>  //for reading json file using cJSON library
 
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
@@ -18,6 +19,43 @@
 #define ONLP_OID_DESC_SIZE 128
 #define ONLP_OID_TABLE_SIZE 128
 #define ONLP_OID_TYPE_CREATE(_type, _id) ( ( (_type) << 24) | (_id))
+
+// Read configure information bu JASON (Melo)
+int read_ufi_json(){
+    // open the file 
+    FILE *fp = fopen("config.json", "r"); 
+    if (fp == NULL) { 
+        printf("Error: Unable to open the file.\n"); 
+        return 1; 
+    } 
+  
+    // read the file contents into a string 
+    char buffer[1024]; 
+    int len = fread(buffer, 1, sizeof(buffer), fp); 
+    fclose(fp); 
+  
+    // parse the JSON data 
+    cJSON *json = cJSON_Parse(buffer); 
+    if (json == NULL) { 
+        const char *error_ptr = cJSON_GetErrorPtr(); 
+        if (error_ptr != NULL) { 
+            printf("Error: %s\n", error_ptr); 
+        } 
+        cJSON_Delete(json); 
+        return 1; 
+    } 
+  
+    // access the JSON data 
+    cJSON *ufi_platform = cJSON_GetObjectItemCaseSensitive(json, "platform"); 
+    if (cJSON_IsString(ufi_platform) && (ufi_platform->valuestring != NULL)) { 
+        printf("Name: %s\n", ufi_platform->valuestring); 
+    } 
+  
+    // delete the JSON object 
+    cJSON_Delete(json); 
+    return 0; 
+}
+
 
 // onlp_led_status
 typedef enum onlp_led_status_e {
