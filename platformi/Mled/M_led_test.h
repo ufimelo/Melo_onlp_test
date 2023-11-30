@@ -22,7 +22,7 @@
 
 
 // Read configure information bu JASON (Melo)
-int read_ufi_json(const char *filename, const char *cake){  //cake is the info you want to print
+int ufi_read_json(const char *filename, const char *cake){  //cake is the info you want to print
      // open the file 
     FILE *fp = fopen(filename, "r"); 
     if (fp == NULL) { 

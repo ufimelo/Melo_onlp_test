@@ -7,7 +7,7 @@
 int main()
 {
     // Enter the info you want to eat/print (Melo)
-    read_ufi_json("config.json", "name");
+    ufi_read_json("config.json", "name");
     
     printf("[START] START M_led_test!        \n");
 
