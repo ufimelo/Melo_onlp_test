@@ -13,21 +13,19 @@
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
 
-// printf with timestamp (Melo)
+// printf with timestamp in microseconds (Melo)
 void t_printf(const char* format, ...) {
-    time_t timer;
-    char buffer[26];
+    struct timeval tv;
     struct tm* tm_info;
 
-    // 取得時間戳記
-    timer = time(NULL);
-    tm_info = localtime(&timer);
+    // 取得當前時間
+    gettimeofday(&tv, NULL);
+    tm_info = localtime(&tv.tv_sec);
 
-    // 格式化時間
-    strftime(buffer, 26, "%Y-%m-%d %H:%M:%S", tm_info);
-
-    // 印出時間戳記
-    printf("[%s] ", buffer);
+    // 印出時間戳記（包括微秒）
+    printf("[%04d-%02d-%02d %02d:%02d:%02d.%06ld] ", 
+           tm_info->tm_year + 1900, tm_info->tm_mon + 1, tm_info->tm_mday,
+           tm_info->tm_hour, tm_info->tm_min, tm_info->tm_sec, tv.tv_usec);
 
     // 使用可變引數列表處理訊息
     va_list args;
