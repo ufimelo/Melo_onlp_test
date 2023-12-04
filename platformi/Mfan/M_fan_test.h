@@ -17,16 +17,16 @@
 /* printf with timestamp in microseconds (Melo)
 ***********************************************
      (1 second = 1,000,000 microseconds) */
-/*void t_printf(const char* format, ...) {
+void t_printf(const char* format, ...) {
     struct timeval tv;
     struct tm* tm_info;
 
     // 取得當前時間
     gettimeofday(&tv, NULL);
-    tm_info = localtime(&tv.tv_sec);
+    tm_info = localtime(&tv.tv_usec);
 
     // 印出時間戳記（包括微秒）
-    printf("[%04d-%02d-%02d %02d:%02d:%02d.%06ld] ", 
+    printf("\n[%04d-%02d-%02d %02d:%02d:%02d.%06ld] ", 
            tm_info->tm_year + 1900, tm_info->tm_mon + 1, tm_info->tm_mday,
            tm_info->tm_hour, tm_info->tm_min, tm_info->tm_sec, tv.tv_usec);
 
@@ -37,8 +37,8 @@
     va_end(args);
 
     printf("\n");
-}*/
-void t_printf(const char* format, ...) {
+}
+/*void t_printf(const char* format, ...) {
     // 開始測量時間
     struct timeval start_time;
     gettimeofday(&start_time, NULL);
@@ -58,8 +58,8 @@ void t_printf(const char* format, ...) {
                         (end_time.tv_usec - start_time.tv_usec);
 
     // 印出執行時間
-    printf("\n程式執行時間: %ld 微秒\n", elapsed_time);
-}
+    printf("\nExecution Time: %ld ms\n", elapsed_time);
+}*/
 
 
 //read config file
