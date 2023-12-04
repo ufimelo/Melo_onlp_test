@@ -14,8 +14,10 @@
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
 
-// printf with timestamp in microseconds (Melo)
-void t_printf(const char* format, ...) {
+/* printf with timestamp in microseconds (Melo)
+***********************************************
+     (1 second = 1,000,000 microseconds) */
+/*void t_printf(const char* format, ...) {
     struct timeval tv;
     struct tm* tm_info;
 
@@ -35,6 +37,28 @@ void t_printf(const char* format, ...) {
     va_end(args);
 
     printf("\n");
+}*/
+void t_printf(const char* format, ...) {
+    // 開始測量時間
+    struct timeval start_time;
+    gettimeofday(&start_time, NULL);
+
+    // 使用可變引數列表處理訊息
+    va_list args;
+    va_start(args, format);
+    vprintf(format, args);
+    va_end(args);
+
+    // 結束測量時間
+    struct timeval end_time;
+    gettimeofday(&end_time, NULL);
+
+    // 計算所經過的時間（以微秒為單位）
+    long elapsed_time = (end_time.tv_sec - start_time.tv_sec) * 1000000 +
+                        (end_time.tv_usec - start_time.tv_usec);
+
+    // 印出執行時間
+    printf("\n程式執行時間: %ld 微秒\n", elapsed_time);
 }
 
 
