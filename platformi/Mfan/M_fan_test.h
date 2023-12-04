@@ -11,6 +11,32 @@
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
 
+// printf with timestamp (Melo)
+void t_printf(const char* format, ...) {
+    time_t timer;
+    char buffer[26];
+    struct tm* tm_info;
+
+    // 取得時間戳記
+    timer = time(NULL);
+    tm_info = localtime(&timer);
+
+    // 格式化時間
+    strftime(buffer, 26, "%Y-%m-%d %H:%M:%S", tm_info);
+
+    // 印出時間戳記
+    printf("[%s] ", buffer);
+
+    // 使用可變引數列表處理訊息
+    va_list args;
+    va_start(args, format);
+    vprintf(format, args);
+    va_end(args);
+
+    printf("\n");
+}
+
+
 //read config file
 void readConfigFile(const char *filename) {
     FILE *file = fopen(filename, "r");

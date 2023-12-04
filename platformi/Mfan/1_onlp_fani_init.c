@@ -1,7 +1,1 @@
-#include "M_fan_test.h"
-#include "config.h"
-
-
-int main(){
-    //onlp_fani_init();
-}
+/* Is incluede in 2_onlp_fani_info_get, No Need to test for init */

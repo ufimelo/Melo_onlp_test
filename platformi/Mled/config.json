@@ -2,3 +2,4 @@
     "platform": "s7801",
     "name": "Melo"
 }
+// look at 2_onlp_ledi_info_get.c: ufi_read_json() to find the example for json usage (Melo)
