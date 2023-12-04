@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>  //for using memset(), strcat(), strlen()
+#include <stdarg.h>
+#include <time.h>
 
 #define ONLP_CONFIG_INFO_STR_MAX 64
 
