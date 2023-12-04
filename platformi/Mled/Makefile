@@ -3,7 +3,9 @@
 CC = gcc
 CFLAGS = -g3 -lm
 LIBS = -L./lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
-CONFIG_LIB = ../platformi/cjson/cJSON.c
+CJSON_PATH = ./platformi/cjson
+CONFIG_LIB = $(CJSON_PATH)/cJSON.c
+
 
 all:
 #	gcc -g3 -lm -o 1_onlp_ledi_init_RESULT 1_onlp_ledi_init.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
