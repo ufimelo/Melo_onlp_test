@@ -16,9 +16,9 @@ int main() {
     for (int port = 33; port < (33+SFP_PORT_MAX_NUM); port++) {
         rc = onlp_sfpi_dom_read(port, data);
         if (rc < 0) {                           
-            printf("[FAILED] Port= %d is QSFP, QSFP not supported by onlp_sfpi_dom_read()\n", port);
+            printf("[FAILED] Port= %d is QSFP, rc= %d, QSFP not supported by onlp_sfpi_dom_read()\n", port, rc);
         } else {
-            printf("[PASSED] Port= %d is SFP, SFP supported by onlp_sfpi_dom_read()\n", port);
+            printf("[PASSED] Port= %d is SFP, rc= %d, SFP supported by onlp_sfpi_dom_read()\n", port, rc);
         }
     }
 
@@ -26,9 +26,9 @@ int main() {
     for (int port = 1; port <= QSFP_PORT_MAX_NUM; port++) {
         rc = onlp_sfpi_dom_read(port, data);
         if (rc < 0) {
-            printf("[PASSED] Port= %d is QSFP, QSFP not supported by onlp_sfpi_dom_read() is correct\n", port);
+            printf("[PASSED] Port= %d is QSFP, rc= %d, QSFP not supported by onlp_sfpi_dom_read() is correct\n", port, rc);
         } else {
-            printf("[FAILED] Port= %d is QSFP, QSFP should not support onlp_sfpi_dom_read() but it seems to support\n", port);
+            printf("[FAILED] Port= %d is QSFP, rc= %d, QSFP should not support onlp_sfpi_dom_read() but it seems to support\n", port, rc);
         }
     }
 
@@ -36,17 +36,17 @@ int main() {
     int port=-1;
     rc = onlp_sfpi_dom_read(port, data);
     if (rc < 0) {
-        printf("[PASSED] Port= %d is not a valid port, shall not supported by onlp_sfpi_dom_read() is correct\n", port);
+        printf("[PASSED] Port= %d is not a valid port, rc= %d, shall not supported by onlp_sfpi_dom_read() is correct\n", port, rc);
     } else {
-        printf("[FAILED] Port= %d is not a valid port, shall not support onlp_sfpi_dom_read() but it seems to support\n", port);
+        printf("[FAILED] Port= %d is not a valid port, rc= %d, shall not support onlp_sfpi_dom_read() but it seems to support\n", port, rc);
     }
 
     port=35;
     rc = onlp_sfpi_dom_read(port, data);
     if (rc < 0) {
-        printf("[PASSED] Port= %d is not a valid port, shall not supported by onlp_sfpi_dom_read() is correct\n", port);
+        printf("[PASSED] Port= %d is not a valid port, rc= %d, shall not supported by onlp_sfpi_dom_read() is correct\n", port, rc);
     } else {
-        printf("[FAILED] Port= %d is not a valid port, shall should not support onlp_sfpi_dom_read() but it seems to support\n", port);
+        printf("[FAILED] Port= %d is not a valid port, rc= %d, shall should not support onlp_sfpi_dom_read() but it seems to support\n", port, rc);
     }
     
 
