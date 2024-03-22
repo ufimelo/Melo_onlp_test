@@ -226,6 +226,6 @@ const char* fan_status_to_string(uint32_t status){
 
 // In fani.h but in fan.h (Melo)
 extern int onlp_fani_info_get(onlp_oid_t id, onlp_fan_info_t* rv);
-// extern int onlp_psui_init(void);
+
 extern int onlp_init(void);
 extern int onlp_denit(void);
