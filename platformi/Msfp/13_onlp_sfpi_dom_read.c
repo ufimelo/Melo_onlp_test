@@ -3,7 +3,7 @@
     This file should not be add in ONL prtoject
 ***************************************************/
 #include "M_sfp_test.h"
-#include "config.h"
+//#include "config.h"
 #define SFP_PORT_MAX_NUM    2
 #define QSFP_PORT_MAX_NUM    32
 
