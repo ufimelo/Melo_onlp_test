@@ -1,3 +1,5 @@
+.PHONY: all clean
+
 all:
 #	gcc -g3 -lm -o 1_onlp_sfpi_init_RESULT 1_onlp_sfpi_init.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
 #
@@ -34,3 +36,5 @@ all:
 #	gcc -g3 -lm -o 17_onlp_sfpi_denit_RESULT 17_onlp_sfpi_denit.c -L/lib/x86_64-linux-gnu/ -lonlp-platform -lonlp
 
 
+clean:
+	rm -f *.o *~ core config.h *_RESULT
